@@ -968,7 +968,7 @@
         "kind": 5,
         "importPath": "backend.settings",
         "description": "backend.settings",
-        "peekOfCode": "ALLOWED_HOSTS = ['*']\nCORS_ALLOW_ALL_ORIGINS = True\n# Application definition\nCORS_ALLOW_CREDENTIALS = False\nCSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8001']  # if you want to allow all origins (adjust carefully)\n# Or set the CSRF middleware to do nothing (not recommended)\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',",
+        "peekOfCode": "ALLOWED_HOSTS = ['*']\nCORS_ALLOW_ALL_ORIGINS = True\n# Application definition\nCORS_ALLOW_CREDENTIALS = True\nCSRF_TRUSTED_ORIGINS = ['*']  # if you want to allow all origins (adjust carefully)\nCORS_ALLOWED_ORIGINS =['*']\n# Or set the CSRF middleware to do nothing (not recommended)\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',",
         "detail": "backend.settings",
         "documentation": {}
     },
@@ -977,7 +977,7 @@
         "kind": 5,
         "importPath": "backend.settings",
         "description": "backend.settings",
-        "peekOfCode": "CORS_ALLOW_ALL_ORIGINS = True\n# Application definition\nCORS_ALLOW_CREDENTIALS = False\nCSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8001']  # if you want to allow all origins (adjust carefully)\n# Or set the CSRF middleware to do nothing (not recommended)\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',",
+        "peekOfCode": "CORS_ALLOW_ALL_ORIGINS = True\n# Application definition\nCORS_ALLOW_CREDENTIALS = True\nCSRF_TRUSTED_ORIGINS = ['*']  # if you want to allow all origins (adjust carefully)\nCORS_ALLOWED_ORIGINS =['*']\n# Or set the CSRF middleware to do nothing (not recommended)\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',",
         "detail": "backend.settings",
         "documentation": {}
     },
@@ -986,7 +986,7 @@
         "kind": 5,
         "importPath": "backend.settings",
         "description": "backend.settings",
-        "peekOfCode": "CORS_ALLOW_CREDENTIALS = False\nCSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8001']  # if you want to allow all origins (adjust carefully)\n# Or set the CSRF middleware to do nothing (not recommended)\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',",
+        "peekOfCode": "CORS_ALLOW_CREDENTIALS = True\nCSRF_TRUSTED_ORIGINS = ['*']  # if you want to allow all origins (adjust carefully)\nCORS_ALLOWED_ORIGINS =['*']\n# Or set the CSRF middleware to do nothing (not recommended)\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',",
         "detail": "backend.settings",
         "documentation": {}
     },
@@ -995,7 +995,7 @@
         "kind": 5,
         "importPath": "backend.settings",
         "description": "backend.settings",
-        "peekOfCode": "CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8001']  # if you want to allow all origins (adjust carefully)\n# Or set the CSRF middleware to do nothing (not recommended)\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'corsheaders',",
+        "peekOfCode": "CSRF_TRUSTED_ORIGINS = ['*']  # if you want to allow all origins (adjust carefully)\nCORS_ALLOWED_ORIGINS =['*']\n# Or set the CSRF middleware to do nothing (not recommended)\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',",
         "detail": "backend.settings",
         "documentation": {}
     },
