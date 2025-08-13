@@ -1,0 +1,1173 @@
+[
+    {
+        "label": "BaseCommand",
+        "importPath": "django.core.management.base",
+        "description": "django.core.management.base",
+        "isExtraImport": true,
+        "detail": "django.core.management.base",
+        "documentation": {}
+    },
+    {
+        "label": "BaseCommand",
+        "importPath": "django.core.management.base",
+        "description": "django.core.management.base",
+        "isExtraImport": true,
+        "detail": "django.core.management.base",
+        "documentation": {}
+    },
+    {
+        "label": "Provider",
+        "importPath": "backend_file.api.models",
+        "description": "backend_file.api.models",
+        "isExtraImport": true,
+        "detail": "backend_file.api.models",
+        "documentation": {}
+    },
+    {
+        "label": "Admin",
+        "importPath": "backend_file.api.models",
+        "description": "backend_file.api.models",
+        "isExtraImport": true,
+        "detail": "backend_file.api.models",
+        "documentation": {}
+    },
+    {
+        "label": "Service",
+        "importPath": "api.models",
+        "description": "api.models",
+        "isExtraImport": true,
+        "detail": "api.models",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "django.db.models.deletion",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.db.models.deletion",
+        "description": "django.db.models.deletion",
+        "detail": "django.db.models.deletion",
+        "documentation": {}
+    },
+    {
+        "label": "django.utils.timezone",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.utils.timezone",
+        "description": "django.utils.timezone",
+        "detail": "django.utils.timezone",
+        "documentation": {}
+    },
+    {
+        "label": "admin",
+        "importPath": "django.contrib",
+        "description": "django.contrib",
+        "isExtraImport": true,
+        "detail": "django.contrib",
+        "documentation": {}
+    },
+    {
+        "label": "admin",
+        "importPath": "django.contrib",
+        "description": "django.contrib",
+        "isExtraImport": true,
+        "detail": "django.contrib",
+        "documentation": {}
+    },
+    {
+        "label": "AppConfig",
+        "importPath": "django.apps",
+        "description": "django.apps",
+        "isExtraImport": true,
+        "detail": "django.apps",
+        "documentation": {}
+    },
+    {
+        "label": "make_password",
+        "importPath": "django.contrib.auth.hashers",
+        "description": "django.contrib.auth.hashers",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.hashers",
+        "documentation": {}
+    },
+    {
+        "label": "make_password",
+        "importPath": "django.contrib.auth.hashers",
+        "description": "django.contrib.auth.hashers",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.hashers",
+        "documentation": {}
+    },
+    {
+        "label": "make_password",
+        "importPath": "django.contrib.auth.hashers",
+        "description": "django.contrib.auth.hashers",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.hashers",
+        "documentation": {}
+    },
+    {
+        "label": "check_password",
+        "importPath": "django.contrib.auth.hashers",
+        "description": "django.contrib.auth.hashers",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.hashers",
+        "documentation": {}
+    },
+    {
+        "label": "serializers",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "TestCase",
+        "importPath": "django.test",
+        "description": "django.test",
+        "isExtraImport": true,
+        "detail": "django.test",
+        "documentation": {}
+    },
+    {
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "include",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "TokenRefreshView",
+        "importPath": "rest_framework_simplejwt.views",
+        "description": "rest_framework_simplejwt.views",
+        "isExtraImport": true,
+        "detail": "rest_framework_simplejwt.views",
+        "documentation": {}
+    },
+    {
+        "label": "api_view",
+        "importPath": "rest_framework.decorators",
+        "description": "rest_framework.decorators",
+        "isExtraImport": true,
+        "detail": "rest_framework.decorators",
+        "documentation": {}
+    },
+    {
+        "label": "api_view",
+        "importPath": "rest_framework.decorators",
+        "description": "rest_framework.decorators",
+        "isExtraImport": true,
+        "detail": "rest_framework.decorators",
+        "documentation": {}
+    },
+    {
+        "label": "authentication_classes",
+        "importPath": "rest_framework.decorators",
+        "description": "rest_framework.decorators",
+        "isExtraImport": true,
+        "detail": "rest_framework.decorators",
+        "documentation": {}
+    },
+    {
+        "label": "permission_classes",
+        "importPath": "rest_framework.decorators",
+        "description": "rest_framework.decorators",
+        "isExtraImport": true,
+        "detail": "rest_framework.decorators",
+        "documentation": {}
+    },
+    {
+        "label": "permission_classes",
+        "importPath": "rest_framework.decorators",
+        "description": "rest_framework.decorators",
+        "isExtraImport": true,
+        "detail": "rest_framework.decorators",
+        "documentation": {}
+    },
+    {
+        "label": "api_view",
+        "importPath": "rest_framework.decorators",
+        "description": "rest_framework.decorators",
+        "isExtraImport": true,
+        "detail": "rest_framework.decorators",
+        "documentation": {}
+    },
+    {
+        "label": "permission_classes",
+        "importPath": "rest_framework.decorators",
+        "description": "rest_framework.decorators",
+        "isExtraImport": true,
+        "detail": "rest_framework.decorators",
+        "documentation": {}
+    },
+    {
+        "label": "permission_classes",
+        "importPath": "rest_framework.decorators",
+        "description": "rest_framework.decorators",
+        "isExtraImport": true,
+        "detail": "rest_framework.decorators",
+        "documentation": {}
+    },
+    {
+        "label": "api_view",
+        "importPath": "rest_framework.decorators",
+        "description": "rest_framework.decorators",
+        "isExtraImport": true,
+        "detail": "rest_framework.decorators",
+        "documentation": {}
+    },
+    {
+        "label": "Response",
+        "importPath": "rest_framework.response",
+        "description": "rest_framework.response",
+        "isExtraImport": true,
+        "detail": "rest_framework.response",
+        "documentation": {}
+    },
+    {
+        "label": "Response",
+        "importPath": "rest_framework.response",
+        "description": "rest_framework.response",
+        "isExtraImport": true,
+        "detail": "rest_framework.response",
+        "documentation": {}
+    },
+    {
+        "label": "APIView",
+        "importPath": "rest_framework.views",
+        "description": "rest_framework.views",
+        "isExtraImport": true,
+        "detail": "rest_framework.views",
+        "documentation": {}
+    },
+    {
+        "label": "APIView",
+        "importPath": "rest_framework.views",
+        "description": "rest_framework.views",
+        "isExtraImport": true,
+        "detail": "rest_framework.views",
+        "documentation": {}
+    },
+    {
+        "label": "APIView",
+        "importPath": "rest_framework.views",
+        "description": "rest_framework.views",
+        "isExtraImport": true,
+        "detail": "rest_framework.views",
+        "documentation": {}
+    },
+    {
+        "label": "ListAPIView",
+        "importPath": "rest_framework.generics",
+        "description": "rest_framework.generics",
+        "isExtraImport": true,
+        "detail": "rest_framework.generics",
+        "documentation": {}
+    },
+    {
+        "label": "ListCreateAPIView",
+        "importPath": "rest_framework.generics",
+        "description": "rest_framework.generics",
+        "isExtraImport": true,
+        "detail": "rest_framework.generics",
+        "documentation": {}
+    },
+    {
+        "label": "RetrieveUpdateDestroyAPIView",
+        "importPath": "rest_framework.generics",
+        "description": "rest_framework.generics",
+        "isExtraImport": true,
+        "detail": "rest_framework.generics",
+        "documentation": {}
+    },
+    {
+        "label": "RetrieveUpdateDestroyAPIView",
+        "importPath": "rest_framework.generics",
+        "description": "rest_framework.generics",
+        "isExtraImport": true,
+        "detail": "rest_framework.generics",
+        "documentation": {}
+    },
+    {
+        "label": "authenticate",
+        "importPath": "django.contrib.auth",
+        "description": "django.contrib.auth",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth",
+        "documentation": {}
+    },
+    {
+        "label": "SessionAuthentication",
+        "importPath": "rest_framework.authentication",
+        "description": "rest_framework.authentication",
+        "isExtraImport": true,
+        "detail": "rest_framework.authentication",
+        "documentation": {}
+    },
+    {
+        "label": "BasicAuthentication",
+        "importPath": "rest_framework.authentication",
+        "description": "rest_framework.authentication",
+        "isExtraImport": true,
+        "detail": "rest_framework.authentication",
+        "documentation": {}
+    },
+    {
+        "label": "IsAuthenticated",
+        "importPath": "rest_framework.permissions",
+        "description": "rest_framework.permissions",
+        "isExtraImport": true,
+        "detail": "rest_framework.permissions",
+        "documentation": {}
+    },
+    {
+        "label": "AllowAny",
+        "importPath": "rest_framework.permissions",
+        "description": "rest_framework.permissions",
+        "isExtraImport": true,
+        "detail": "rest_framework.permissions",
+        "documentation": {}
+    },
+    {
+        "label": "IsAuthenticated",
+        "importPath": "rest_framework.permissions",
+        "description": "rest_framework.permissions",
+        "isExtraImport": true,
+        "detail": "rest_framework.permissions",
+        "documentation": {}
+    },
+    {
+        "label": "AllowAny",
+        "importPath": "rest_framework.permissions",
+        "description": "rest_framework.permissions",
+        "isExtraImport": true,
+        "detail": "rest_framework.permissions",
+        "documentation": {}
+    },
+    {
+        "label": "AllowAny",
+        "importPath": "rest_framework.permissions",
+        "description": "rest_framework.permissions",
+        "isExtraImport": true,
+        "detail": "rest_framework.permissions",
+        "documentation": {}
+    },
+    {
+        "label": "csrf_exempt",
+        "importPath": "django.views.decorators.csrf",
+        "description": "django.views.decorators.csrf",
+        "isExtraImport": true,
+        "detail": "django.views.decorators.csrf",
+        "documentation": {}
+    },
+    {
+        "label": "csrf_exempt",
+        "importPath": "django.views.decorators.csrf",
+        "description": "django.views.decorators.csrf",
+        "isExtraImport": true,
+        "detail": "django.views.decorators.csrf",
+        "documentation": {}
+    },
+    {
+        "label": "method_decorator",
+        "importPath": "django.utils.decorators",
+        "description": "django.utils.decorators",
+        "isExtraImport": true,
+        "detail": "django.utils.decorators",
+        "documentation": {}
+    },
+    {
+        "label": "RefreshToken",
+        "importPath": "rest_framework_simplejwt.tokens",
+        "description": "rest_framework_simplejwt.tokens",
+        "isExtraImport": true,
+        "detail": "rest_framework_simplejwt.tokens",
+        "documentation": {}
+    },
+    {
+        "label": "get_object_or_404",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "MultiPartParser",
+        "importPath": "rest_framework.parsers",
+        "description": "rest_framework.parsers",
+        "isExtraImport": true,
+        "detail": "rest_framework.parsers",
+        "documentation": {}
+    },
+    {
+        "label": "FormParser",
+        "importPath": "rest_framework.parsers",
+        "description": "rest_framework.parsers",
+        "isExtraImport": true,
+        "detail": "rest_framework.parsers",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "get_asgi_application",
+        "importPath": "django.core.asgi",
+        "description": "django.core.asgi",
+        "isExtraImport": true,
+        "detail": "django.core.asgi",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "dj_database_url",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "dj_database_url",
+        "description": "dj_database_url",
+        "detail": "dj_database_url",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "static",
+        "importPath": "django.conf.urls.static",
+        "description": "django.conf.urls.static",
+        "isExtraImport": true,
+        "detail": "django.conf.urls.static",
+        "documentation": {}
+    },
+    {
+        "label": "get_wsgi_application",
+        "importPath": "django.core.wsgi",
+        "description": "django.core.wsgi",
+        "isExtraImport": true,
+        "detail": "django.core.wsgi",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "Command",
+        "kind": 6,
+        "importPath": "api.management.commands.fix_provider_admin",
+        "description": "api.management.commands.fix_provider_admin",
+        "peekOfCode": "class Command(BaseCommand):\n    help = 'Fix Provider records with null admin by assigning a default admin'\n    def handle(self, *args, **kwargs):\n        # Get or create a default admin to assign\n        default_admin, created = Admin.objects.get_or_create(\n            adminEmail='defaultadmin@example.com',\n            defaults={\n                'adminName': 'Default Admin',\n                'adminRole': 'Super-admin',\n                'adminPassword': 'defaultpassword'  # You may want to hash this properly",
+        "detail": "api.management.commands.fix_provider_admin",
+        "documentation": {}
+    },
+    {
+        "label": "Command",
+        "kind": 6,
+        "importPath": "api.management.commands.seed_services",
+        "description": "api.management.commands.seed_services",
+        "peekOfCode": "class Command(BaseCommand):\n    help = 'Seed the Service table with fixed categories'\n    def handle(self, *args, **kwargs):\n        categories = [\n            \"Cleaning Service\",\n            \"Plumbing Service\",\n            \"Electrical Service\",\n            \"Pest Control\",\n            \"Appliance Repair\",\n            \"Landscaping/Gardening\",",
+        "detail": "api.management.commands.seed_services",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "api.migrations.0001_initial",
+        "description": "api.migrations.0001_initial",
+        "peekOfCode": "class Migration(migrations.Migration):\n    initial = True\n    dependencies = [\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='Admin',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),\n                ('adminName', models.CharField(max_length=100)),",
+        "detail": "api.migrations.0001_initial",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "api.migrations.0002_service_provider",
+        "description": "api.migrations.0002_service_provider",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('api', '0001_initial'),\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='Service',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),\n                ('name', models.CharField(max_length=100, unique=True)),",
+        "detail": "api.migrations.0002_service_provider",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "api.migrations.0003_provider_admin",
+        "description": "api.migrations.0003_provider_admin",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('api', '0002_service_provider'),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='provider',\n            name='admin',\n         field=models.ForeignKey(\n    on_delete=django.db.models.deletion.CASCADE,",
+        "detail": "api.migrations.0003_provider_admin",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "api.migrations.0004_alert_alter_provider_admin",
+        "description": "api.migrations.0004_alert_alter_provider_admin",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('api', '0003_provider_admin'),\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='Alert',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),\n                ('title', models.CharField(max_length=200)),",
+        "detail": "api.migrations.0004_alert_alter_provider_admin",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "api.migrations.0005_alter_provider_admin",
+        "description": "api.migrations.0005_alter_provider_admin",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('api', '0004_alert_alter_provider_admin'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='provider',\n            name='admin',\n            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, related_name='providers', to='api.admin'),\n            preserve_default=False,",
+        "detail": "api.migrations.0005_alter_provider_admin",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "api.migrations.0006_alert_announcement_image",
+        "description": "api.migrations.0006_alert_announcement_image",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        (\"api\", \"0005_alter_provider_admin\"),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name=\"alert\",\n            name=\"announcement_image\",\n            field=models.ImageField(blank=True, null=True, upload_to=\"alerts/\"),\n        ),",
+        "detail": "api.migrations.0006_alert_announcement_image",
+        "documentation": {}
+    },
+    {
+        "label": "ApiConfig",
+        "kind": 6,
+        "importPath": "api.apps",
+        "description": "api.apps",
+        "peekOfCode": "class ApiConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'api'",
+        "detail": "api.apps",
+        "documentation": {}
+    },
+    {
+        "label": "Admin",
+        "kind": 6,
+        "importPath": "api.models",
+        "description": "api.models",
+        "peekOfCode": "class Admin(models.Model):\n    adminName = models.CharField(max_length=100)\n    adminEmail = models.EmailField(unique=True)\n    adminRole = models.CharField(max_length=50)\n    adminPassword = models.CharField(max_length=128)\n    def save(self, *args, **kwargs):\n        # Hash the password before saving\n        # Removed password hashing here to avoid double/triple hashing\n        super().save(*args, **kwargs)\n    def __str__(self):",
+        "detail": "api.models",
+        "documentation": {}
+    },
+    {
+        "label": "Service",
+        "kind": 6,
+        "importPath": "api.models",
+        "description": "api.models",
+        "peekOfCode": "class Service(models.Model):\n    name = models.CharField(max_length=100, unique=True)\n    def __str__(self):\n        return self.name\nclass Provider(models.Model):\n    provider_name = models.CharField(max_length=100)\n    email = models.EmailField()\n    phone = models.CharField(max_length=20)\n    location = models.CharField(max_length=100)\n    availability = models.CharField(max_length=100)",
+        "detail": "api.models",
+        "documentation": {}
+    },
+    {
+        "label": "Provider",
+        "kind": 6,
+        "importPath": "api.models",
+        "description": "api.models",
+        "peekOfCode": "class Provider(models.Model):\n    provider_name = models.CharField(max_length=100)\n    email = models.EmailField()\n    phone = models.CharField(max_length=20)\n    location = models.CharField(max_length=100)\n    availability = models.CharField(max_length=100)\n    service = models.ForeignKey(Service, related_name='providers', on_delete=models.CASCADE)\n    admin = models.ForeignKey('Admin', related_name='providers', on_delete=models.CASCADE)\n    def __str__(self):\n        return f\"{self.provider_name} - {self.service.name}\"",
+        "detail": "api.models",
+        "documentation": {}
+    },
+    {
+        "label": "Alert",
+        "kind": 6,
+        "importPath": "api.models",
+        "description": "api.models",
+        "peekOfCode": "class Alert(models.Model):\n    title = models.CharField(max_length=200)\n    category = models.CharField(max_length=100)\n    message = models.TextField()\n    public_date = models.DateTimeField()\n    estate = models.CharField(max_length=100)  # e.g., Paradise Estate, Range View Estate, General\n    role = models.CharField(max_length=50)  # e.g., residents, security\n    announcement_image = models.ImageField(upload_to='alerts/', blank=True, null=True)  # New field\n    created_at = models.DateTimeField(auto_now_add=True)\n    def __str__(self):",
+        "detail": "api.models",
+        "documentation": {}
+    },
+    {
+        "label": "AdminSerializer",
+        "kind": 6,
+        "importPath": "api.serializers",
+        "description": "api.serializers",
+        "peekOfCode": "class AdminSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = Admin\n        fields = ['id', 'adminName', 'adminEmail', 'adminRole', 'adminPassword']\n        extra_kwargs = {\n            'adminPassword': {'write_only': True},\n            'id': {'read_only': True}  # Make id read_only\n        }\n    def create(self, validated_data):\n        password = validated_data.get('adminPassword')",
+        "detail": "api.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "ServiceSerializer",
+        "kind": 6,
+        "importPath": "api.serializers",
+        "description": "api.serializers",
+        "peekOfCode": "class ServiceSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = Service\n        fields = ['id', 'name']\n        extra_kwargs = {\n            'id': {'read_only': True}  # Make id read_only\n        }\nclass ProviderSerializer(serializers.ModelSerializer):\n    service = ServiceSerializer(read_only=True)\n    service_id = serializers.PrimaryKeyRelatedField(",
+        "detail": "api.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "ProviderSerializer",
+        "kind": 6,
+        "importPath": "api.serializers",
+        "description": "api.serializers",
+        "peekOfCode": "class ProviderSerializer(serializers.ModelSerializer):\n    service = ServiceSerializer(read_only=True)\n    service_id = serializers.PrimaryKeyRelatedField(\n        queryset=Service.objects.all(), source='service', write_only=True\n    )\n    admin = serializers.PrimaryKeyRelatedField(\n        queryset=Admin.objects.all(), write_only=True\n    )\n    admin_info = serializers.StringRelatedField(source='admin', read_only=True)\n    class Meta:",
+        "detail": "api.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "ServiceWithProvidersSerializer",
+        "kind": 6,
+        "importPath": "api.serializers",
+        "description": "api.serializers",
+        "peekOfCode": "class ServiceWithProvidersSerializer(serializers.ModelSerializer):\n    providers = ProviderSerializer(many=True, read_only=True, source='provider_set')\n    class Meta:\n        model = Service\n        fields = ['id', 'name', 'providers']\n        extra_kwargs = {\n            'id': {'read_only': True}  # Make id read_only\n        }\nclass AlertSerializer(serializers.ModelSerializer):\n    class Meta:",
+        "detail": "api.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "AlertSerializer",
+        "kind": 6,
+        "importPath": "api.serializers",
+        "description": "api.serializers",
+        "peekOfCode": "class AlertSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = Alert\n        fields = ['id', 'title', 'category', 'message', 'public_date', 'estate', 'role', 'announcement_image', 'created_at']\n        extra_kwargs = {\n            'id': {'read_only': True},\n            'created_at': {'read_only': True}\n        }",
+        "detail": "api.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "urlpatterns",
+        "kind": 5,
+        "importPath": "api.urls",
+        "description": "api.urls",
+        "peekOfCode": "urlpatterns = [\n    path('admin/registerAdmin', register_admin, name='register_admin'),\n    path('admin/login', login_admin, name='login_admin'),\n    path('admin/getAllAdmin', get_all_admin, name='get_all_admin'),\n    path('admin/getRangeViewData', get_range_view_admins, name='get_range_view_admins'),\n    path('admin/getParadiseData', get_paradise_admins, name='get_paradise_admins'),\n    path('admin/getParadiseAndRangeViewAdmins', get_paradise_and_range_view_admins, name='get_paradise_and_range_view_admins'),\n    path('admin/deleteAdmin/<int:id>', delete_admin, name='delete_admin'),\n    path('admin/getAdminById/<int:id>', get_update_admin_by_id, name='get_update_admin_by_id'),\n    path('admin/getUserData', get_user_data, name='get_user_data'),  # ✅ Add this line",
+        "detail": "api.urls",
+        "documentation": {}
+    },
+    {
+        "label": "ServiceListView",
+        "kind": 6,
+        "importPath": "api.views",
+        "description": "api.views",
+        "peekOfCode": "class ServiceListView(ListAPIView):\n    queryset = Service.objects.all()\n    serializer_class = ServiceSerializer\nfrom rest_framework.views import APIView\nclass ServiceWithProvidersView(APIView):\n    def get(self, request):\n        services = Service.objects.all()\n        serializer = ServiceWithProvidersSerializer(services, many=True)\n        return Response(serializer.data)\nfrom rest_framework.generics import RetrieveUpdateDestroyAPIView",
+        "detail": "api.views",
+        "documentation": {}
+    },
+    {
+        "label": "ServiceWithProvidersView",
+        "kind": 6,
+        "importPath": "api.views",
+        "description": "api.views",
+        "peekOfCode": "class ServiceWithProvidersView(APIView):\n    def get(self, request):\n        services = Service.objects.all()\n        serializer = ServiceWithProvidersSerializer(services, many=True)\n        return Response(serializer.data)\nfrom rest_framework.generics import RetrieveUpdateDestroyAPIView\nfrom rest_framework.decorators import api_view\nfrom django.shortcuts import get_object_or_404\nclass ProviderListCreateView(ListCreateAPIView):\n    serializer_class = ProviderSerializer",
+        "detail": "api.views",
+        "documentation": {}
+    },
+    {
+        "label": "ProviderListCreateView",
+        "kind": 6,
+        "importPath": "api.views",
+        "description": "api.views",
+        "peekOfCode": "class ProviderListCreateView(ListCreateAPIView):\n    serializer_class = ProviderSerializer\n    queryset = Provider.objects.all()  # Default queryset\n    def get_queryset(self):\n        service_name = self.request.query_params.get('service_name')\n        admin_id = self.request.query_params.get('admin_id')\n        queryset = Provider.objects.all()\n        if service_name:\n            queryset = queryset.filter(service__name=service_name)\n        if admin_id:",
+        "detail": "api.views",
+        "documentation": {}
+    },
+    {
+        "label": "ProviderRetrieveUpdateDestroyView",
+        "kind": 6,
+        "importPath": "api.views",
+        "description": "api.views",
+        "peekOfCode": "class ProviderRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):\n    queryset = Provider.objects.all()\n    serializer_class = ProviderSerializer\nfrom rest_framework.views import APIView\nfrom rest_framework.response import Response\nclass ServiceProvidersByEstateView(APIView):\n    def get(self, request):\n        services = Service.objects.all()\n        response_data = []\n        for service in services:",
+        "detail": "api.views",
+        "documentation": {}
+    },
+    {
+        "label": "ServiceProvidersByEstateView",
+        "kind": 6,
+        "importPath": "api.views",
+        "description": "api.views",
+        "peekOfCode": "class ServiceProvidersByEstateView(APIView):\n    def get(self, request):\n        services = Service.objects.all()\n        response_data = []\n        for service in services:\n            providers = Provider.objects.filter(service=service)\n            estate_dict = {}\n            for provider in providers:\n                try:\n                    estate = provider.admin.adminRole",
+        "detail": "api.views",
+        "documentation": {}
+    },
+    {
+        "label": "AlertListCreateView",
+        "kind": 6,
+        "importPath": "api.views",
+        "description": "api.views",
+        "peekOfCode": "class AlertListCreateView(ListCreateAPIView):\n    queryset = Alert.objects.all().order_by('-created_at')\n    serializer_class = AlertSerializer\n    parser_classes = [MultiPartParser, FormParser]  # Support file uploads\n    def get_queryset(self):\n        queryset = super().get_queryset()\n        estate = self.request.query_params.get('estate', None)\n        role = self.request.query_params.get('role', None)\n        if estate:\n            queryset = queryset.filter(estate__iexact=estate)",
+        "detail": "api.views",
+        "documentation": {}
+    },
+    {
+        "label": "AlertRetrieveUpdateDestroyView",
+        "kind": 6,
+        "importPath": "api.views",
+        "description": "api.views",
+        "peekOfCode": "class AlertRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):\n    queryset = Alert.objects.all()\n    serializer_class = AlertSerializer\n    parser_classes = [MultiPartParser, FormParser]  # for file uploads\n    # Optionally, override get_queryset() if you want filters, but usually it's by ID.",
+        "detail": "api.views",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_data",
+        "kind": 2,
+        "importPath": "api.views",
+        "description": "api.views",
+        "peekOfCode": "def get_user_data(request):\n    try:\n        admin = request.user\n        serializer = AdminSerializer(admin)\n        return Response({'success': True, 'userData': serializer.data}, status=status.HTTP_200_OK)\n    except Exception as e:\n        return Response({'success': False, 'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)\nfrom rest_framework.decorators import api_view, permission_classes\nfrom rest_framework.permissions import AllowAny\nfrom django.utils.decorators import method_decorator",
+        "detail": "api.views",
+        "documentation": {}
+    },
+    {
+        "label": "register_admin",
+        "kind": 2,
+        "importPath": "api.views",
+        "description": "api.views",
+        "peekOfCode": "def register_admin(request):\n    if request.method == 'POST':\n        serializer = AdminSerializer(data=request.data)\n        if serializer.is_valid():\n            admin = serializer.save()\n            return Response(AdminSerializer(admin).data, status=status.HTTP_201_CREATED)\n        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)\nfrom rest_framework_simplejwt.tokens import RefreshToken\n@csrf_exempt\n@api_view(['POST'])",
+        "detail": "api.views",
+        "documentation": {}
+    },
+    {
+        "label": "login_admin",
+        "kind": 2,
+        "importPath": "api.views",
+        "description": "api.views",
+        "peekOfCode": "def login_admin(request):\n    data = request.data\n    adminEmail = data.get('adminEmail')\n    adminPassword = data.get('adminPassword')\n    try:\n        admin = Admin.objects.filter(adminEmail=adminEmail).first()\n        if admin and adminPassword and check_password(adminPassword, admin.adminPassword):\n            refresh = RefreshToken.for_user(admin)\n            serializer = AdminSerializer(admin)\n            return Response({",
+        "detail": "api.views",
+        "documentation": {}
+    },
+    {
+        "label": "get_all_admin",
+        "kind": 2,
+        "importPath": "api.views",
+        "description": "api.views",
+        "peekOfCode": "def get_all_admin(request):\n    admins = Admin.objects.all()\n    serializer = AdminSerializer(admins, many=True)\n    return Response(serializer.data)\n@api_view(['GET'])\ndef get_range_view_admins(request):\n    admins = Admin.objects.filter(adminRole=\"Range-view admin\")\n    serializer = AdminSerializer(admins, many=True)\n    return Response(serializer.data)\n@api_view(['GET'])",
+        "detail": "api.views",
+        "documentation": {}
+    },
+    {
+        "label": "get_range_view_admins",
+        "kind": 2,
+        "importPath": "api.views",
+        "description": "api.views",
+        "peekOfCode": "def get_range_view_admins(request):\n    admins = Admin.objects.filter(adminRole=\"Range-view admin\")\n    serializer = AdminSerializer(admins, many=True)\n    return Response(serializer.data)\n@api_view(['GET'])\ndef get_paradise_admins(request):\n    admins = Admin.objects.filter(adminRole=\"Paradise admin\")\n    serializer = AdminSerializer(admins, many=True)\n    return Response(serializer.data)\nfrom rest_framework.decorators import permission_classes",
+        "detail": "api.views",
+        "documentation": {}
+    },
+    {
+        "label": "get_paradise_admins",
+        "kind": 2,
+        "importPath": "api.views",
+        "description": "api.views",
+        "peekOfCode": "def get_paradise_admins(request):\n    admins = Admin.objects.filter(adminRole=\"Paradise admin\")\n    serializer = AdminSerializer(admins, many=True)\n    return Response(serializer.data)\nfrom rest_framework.decorators import permission_classes\nfrom rest_framework.permissions import AllowAny\n@api_view(['GET'])\n@permission_classes([AllowAny])\ndef get_paradise_and_range_view_admins(request):\n    current_role = request.query_params.get('currentRole', None)",
+        "detail": "api.views",
+        "documentation": {}
+    },
+    {
+        "label": "get_paradise_and_range_view_admins",
+        "kind": 2,
+        "importPath": "api.views",
+        "description": "api.views",
+        "peekOfCode": "def get_paradise_and_range_view_admins(request):\n    current_role = request.query_params.get('currentRole', None)\n    if current_role == \"Super-admin\":\n        admins = Admin.objects.filter(adminRole__in=[\"Paradise admin\", \"Range-view admin\"])\n    elif current_role == \"Range-view admin\":\n        admins = Admin.objects.filter(adminRole=\"Range-view admin\")\n    elif current_role == \"Paradise admin\":\n        admins = Admin.objects.filter(adminRole=\"Paradise admin\")\n    else:\n        admins = Admin.objects.none()",
+        "detail": "api.views",
+        "documentation": {}
+    },
+    {
+        "label": "delete_admin",
+        "kind": 2,
+        "importPath": "api.views",
+        "description": "api.views",
+        "peekOfCode": "def delete_admin(request, id):\n    try:\n        admin = get_object_or_404(Admin, id=id)\n        admin.delete()\n        return Response({'message': 'Admin deleted successfully'}, status=status.HTTP_200_OK)\n    except Exception as e:\n        return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)\n@api_view(['GET', 'PUT'])\n@permission_classes([AllowAny])\ndef get_update_admin_by_id(request, id):",
+        "detail": "api.views",
+        "documentation": {}
+    },
+    {
+        "label": "get_update_admin_by_id",
+        "kind": 2,
+        "importPath": "api.views",
+        "description": "api.views",
+        "peekOfCode": "def get_update_admin_by_id(request, id):\n    try:\n        admin = get_object_or_404(Admin, id=id)\n        if request.method == 'GET':\n            serializer = AdminSerializer(admin)\n            return Response(serializer.data)\n        elif request.method == 'PUT':\n            serializer = AdminSerializer(admin, data=request.data, partial=True)\n            if serializer.is_valid():\n                serializer.save()",
+        "detail": "api.views",
+        "documentation": {}
+    },
+    {
+        "label": "application",
+        "kind": 5,
+        "importPath": "backend.asgi",
+        "description": "backend.asgi",
+        "peekOfCode": "application = get_asgi_application()",
+        "detail": "backend.asgi",
+        "documentation": {}
+    },
+    {
+        "label": "BASE_DIR",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "BASE_DIR = Path(__file__).resolve().parent.parent\nload_dotenv(os.path.join(BASE_DIR, '.env'))\n# Quick-start development settings - unsuitable for production\n# See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/\n# SECURITY WARNING: keep the secret key used in production secret!\nSECRET_KEY = 'django-insecure-q6)(9p#496c_-@lsvj-bni-l#$^u0cfy$fy^o6%6-3l_ie1rd5'\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\n# ALLOWED_HOSTS = [\n#     \"vaultify-43wm.onrender.com\",       # your backend's Render domain",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "SECRET_KEY",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "SECRET_KEY = 'django-insecure-q6)(9p#496c_-@lsvj-bni-l#$^u0cfy$fy^o6%6-3l_ie1rd5'\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\n# ALLOWED_HOSTS = [\n#     \"vaultify-43wm.onrender.com\",       # your backend's Render domain\n#     \"vaultifybackend.onrender.com\",         # optional - your custom domain if any\n#     \"localhost\",                        # optional - for local testing\n#     \"127.0.0.1\",                        # optional - for local testing\n# ]\nALLOWED_HOSTS = ['*']",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "DEBUG",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "DEBUG = True\n# ALLOWED_HOSTS = [\n#     \"vaultify-43wm.onrender.com\",       # your backend's Render domain\n#     \"vaultifybackend.onrender.com\",         # optional - your custom domain if any\n#     \"localhost\",                        # optional - for local testing\n#     \"127.0.0.1\",                        # optional - for local testing\n# ]\nALLOWED_HOSTS = ['*']\nCORS_ALLOW_ALL_ORIGINS = True\n# Application definition",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "ALLOWED_HOSTS",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "ALLOWED_HOSTS = ['*']\nCORS_ALLOW_ALL_ORIGINS = True\n# Application definition\nCORS_ALLOW_CREDENTIALS = False\nCSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8001']  # if you want to allow all origins (adjust carefully)\n# Or set the CSRF middleware to do nothing (not recommended)\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "CORS_ALLOW_ALL_ORIGINS",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "CORS_ALLOW_ALL_ORIGINS = True\n# Application definition\nCORS_ALLOW_CREDENTIALS = False\nCSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8001']  # if you want to allow all origins (adjust carefully)\n# Or set the CSRF middleware to do nothing (not recommended)\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "CORS_ALLOW_CREDENTIALS",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "CORS_ALLOW_CREDENTIALS = False\nCSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8001']  # if you want to allow all origins (adjust carefully)\n# Or set the CSRF middleware to do nothing (not recommended)\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "CSRF_TRUSTED_ORIGINS",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8001']  # if you want to allow all origins (adjust carefully)\n# Or set the CSRF middleware to do nothing (not recommended)\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'corsheaders',",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "INSTALLED_APPS",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "INSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'corsheaders',\n    'rest_framework',\n    'rest_framework_simplejwt',",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "MIDDLEWARE",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "MIDDLEWARE = [\n    'corsheaders.middleware.CorsMiddleware',\n    'django.middleware.security.SecurityMiddleware',\n    'django.contrib.sessions.middleware.SessionMiddleware',  # sessions first\n    'django.middleware.common.CommonMiddleware',\n    # 'django.middleware.csrf.CsrfViewMiddleware',  # then CSRF middleware\n    'django.contrib.auth.middleware.AuthenticationMiddleware',\n    'django.contrib.messages.middleware.MessageMiddleware',\n    'django.middleware.clickjacking.XFrameOptionsMiddleware',\n]",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "ROOT_URLCONF",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "ROOT_URLCONF = 'backend.urls'\nTEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.debug',\n                'django.template.context_processors.request',",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "TEMPLATES",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "TEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.debug',\n                'django.template.context_processors.request',\n                'django.contrib.auth.context_processors.auth',",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "WSGI_APPLICATION",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "WSGI_APPLICATION = 'backend.wsgi.application'\n# Database\n# https://docs.djangoproject.com/en/5.1/ref/settings/#databases\nimport dj_database_url\nimport os\nDATABASES = {\n    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))\n    # 'default': dj_database_url.config(default='postgresql://vaultifydb_user:bzCxP5iz8QoLX8g6tdyuSTNd3T9kps7b@dpg-d27fncuuk2gs73e4a7i0-a.oregon-postgres.render.com/vaultifydb')\n}\n# DATABASES = {",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "DATABASES",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "DATABASES = {\n    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))\n    # 'default': dj_database_url.config(default='postgresql://vaultifydb_user:bzCxP5iz8QoLX8g6tdyuSTNd3T9kps7b@dpg-d27fncuuk2gs73e4a7i0-a.oregon-postgres.render.com/vaultifydb')\n}\n# DATABASES = {\n#     'default': {\n#         'ENGINE': 'django.db.backends.postgresql',\n#         'NAME': 'vaultifyadmindb',\n#         'USER': 'vaultifyadmindb_user',\n#         'PASSWORD': 'sZiDhg7pVWRcSrRJdGPijKqymHZGbLZT',",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "AUTH_PASSWORD_VALIDATORS",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "AUTH_PASSWORD_VALIDATORS = [\n    {\n        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',\n    },\n    {\n        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',\n    },\n    {\n        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',\n    },",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "LANGUAGE_CODE",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "LANGUAGE_CODE = 'en-us'\nTIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "TIME_ZONE",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "TIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n# Django REST Framework configuration with JWT Authentication",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "USE_I18N",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n# Django REST Framework configuration with JWT Authentication\nREST_FRAMEWORK = {",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "USE_TZ",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n# Django REST Framework configuration with JWT Authentication\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': (",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "STATIC_URL",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "STATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n# Django REST Framework configuration with JWT Authentication\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': (\n        'rest_framework_simplejwt.authentication.JWTAuthentication',\n    ),\n    'DEFAULT_PERMISSION_CLASSES': (",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "DEFAULT_AUTO_FIELD",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n# Django REST Framework configuration with JWT Authentication\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': (\n        'rest_framework_simplejwt.authentication.JWTAuthentication',\n    ),\n    'DEFAULT_PERMISSION_CLASSES': (\n        'rest_framework.permissions.AllowAny',  # or your custom permissions\n    ),\n    'DEFAULT_RENDERER_CLASSES': (",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "REST_FRAMEWORK",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "REST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': (\n        'rest_framework_simplejwt.authentication.JWTAuthentication',\n    ),\n    'DEFAULT_PERMISSION_CLASSES': (\n        'rest_framework.permissions.AllowAny',  # or your custom permissions\n    ),\n    'DEFAULT_RENDERER_CLASSES': (\n        'rest_framework.renderers.JSONRenderer',\n    ),",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "MEDIA_URL",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "MEDIA_URL = '/media/'\nMEDIA_ROOT = BASE_DIR / 'media'",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "MEDIA_ROOT",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "MEDIA_ROOT = BASE_DIR / 'media'",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "urlpatterns",
+        "kind": 5,
+        "importPath": "backend.urls",
+        "description": "backend.urls",
+        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    path('api/', include('api.urls')),\n]\nif settings.DEBUG:\n    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)",
+        "detail": "backend.urls",
+        "documentation": {}
+    },
+    {
+        "label": "application",
+        "kind": 5,
+        "importPath": "backend.wsgi",
+        "description": "backend.wsgi",
+        "peekOfCode": "application = get_wsgi_application()",
+        "detail": "backend.wsgi",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "manage",
+        "description": "manage",
+        "peekOfCode": "def main():\n    \"\"\"Run administrative tasks.\"\"\"\n    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings')\n    try:\n        from django.core.management import execute_from_command_line\n    except ImportError as exc:\n        raise ImportError(\n            \"Couldn't import Django. Are you sure it's installed and \"\n            \"available on your PYTHONPATH environment variable? Did you \"\n            \"forget to activate a virtual environment?\"",
+        "detail": "manage",
+        "documentation": {}
+    }
+]
