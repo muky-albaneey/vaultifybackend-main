@@ -36,7 +36,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 CORS_ALLOW_ALL_ORIGINS = True
 # Application definition
-CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_CREDENTIALS = False
 CSRF_TRUSTED_ORIGINS = ['*']  # if you want to allow all origins (adjust carefully)
 CORS_ALLOWED_ORIGINS =['*']
 # Or set the CSRF middleware to do nothing (not recommended)
