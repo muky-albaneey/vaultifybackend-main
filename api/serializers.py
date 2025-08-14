@@ -58,11 +58,48 @@ class ServiceWithProvidersSerializer(serializers.ModelSerializer):
             'id': {'read_only': True}  # Make id read_only
         }
 
+# class AlertSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Alert
+#         fields = ['id', 'title', 'category', 'message', 'public_date', 'estate', 'role', 'announcement_image', 'created_at']
+#         extra_kwargs = {
+#             'id': {'read_only': True},
+#             'created_at': {'read_only': True}
+#         }
+from rest_framework import serializers
+from .models import Alert, AlertAttachment
+
+class AlertAttachmentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AlertAttachment
+        fields = ['id', 'announcement_image']
+        extra_kwargs = {'id': {'read_only': True}}
+
 class AlertSerializer(serializers.ModelSerializer):
+    announcement_image = serializers.ListField(
+        child=serializers.FileField(),
+        write_only=True,
+        required=False
+    )
+    attachments = AlertAttachmentSerializer(many=True, read_only=True, source='announcement_image')
+
     class Meta:
         model = Alert
-        fields = ['id', 'title', 'category', 'message', 'public_date', 'estate', 'role', 'announcement_image', 'created_at']
+        fields = [
+            'id', 'title', 'category', 'message', 'public_date', 'estate', 'role',
+            'announcement_image', 'attachments', 'created_at'
+        ]
         extra_kwargs = {
             'id': {'read_only': True},
             'created_at': {'read_only': True}
         }
+
+    def create(self, validated_data):
+        # Pop file data
+        files = validated_data.pop('announcement_image', [])
+        alert = Alert.objects.create(**validated_data)
+
+        for file in files:
+            AlertAttachment.objects.create(alert=alert, announcement_image=file)
+
+        return alert

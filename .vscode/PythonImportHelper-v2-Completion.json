@@ -136,6 +136,30 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -215,6 +239,14 @@
         "description": "django.contrib.auth.hashers",
         "isExtraImport": true,
         "detail": "django.contrib.auth.hashers",
+        "documentation": {}
+    },
+    {
+        "label": "serializers",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
         "documentation": {}
     },
     {
@@ -685,6 +717,15 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "api.migrations.0007_remove_alert_announcement_image_alertattachment",
+        "description": "api.migrations.0007_remove_alert_announcement_image_alertattachment",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        (\"api\", \"0006_alert_announcement_image\"),\n    ]\n    operations = [\n        migrations.RemoveField(\n            model_name=\"alert\",\n            name=\"announcement_image\",\n        ),\n        migrations.CreateModel(",
+        "detail": "api.migrations.0007_remove_alert_announcement_image_alertattachment",
+        "documentation": {}
+    },
+    {
         "label": "ApiConfig",
         "kind": 6,
         "importPath": "api.apps",
@@ -725,7 +766,16 @@
         "kind": 6,
         "importPath": "api.models",
         "description": "api.models",
-        "peekOfCode": "class Alert(models.Model):\n    title = models.CharField(max_length=200)\n    category = models.CharField(max_length=100)\n    message = models.TextField()\n    public_date = models.DateTimeField()\n    estate = models.CharField(max_length=100)  # e.g., Paradise Estate, Range View Estate, General\n    role = models.CharField(max_length=50)  # e.g., residents, security\n    announcement_image = models.ImageField(upload_to='alerts/', blank=True, null=True)  # New field\n    created_at = models.DateTimeField(auto_now_add=True)\n    def __str__(self):",
+        "peekOfCode": "class Alert(models.Model):\n    title = models.CharField(max_length=200)\n    category = models.CharField(max_length=100)\n    message = models.TextField()\n    public_date = models.DateTimeField()\n    estate = models.CharField(max_length=100)\n    role = models.CharField(max_length=50)\n    created_at = models.DateTimeField(auto_now_add=True)\n    def __str__(self):\n        return f\"{self.title} - {self.estate} - {self.role}\"",
+        "detail": "api.models",
+        "documentation": {}
+    },
+    {
+        "label": "AlertAttachment",
+        "kind": 6,
+        "importPath": "api.models",
+        "description": "api.models",
+        "peekOfCode": "class AlertAttachment(models.Model):\n    alert = models.ForeignKey(Alert, related_name='announcement_image', on_delete=models.CASCADE)\n    announcement_image = models.FileField(\n        upload_to='alerts/', \n        blank=True, \n        null=True\n    )\n    def __str__(self):\n        return f\"{self.alert.title} - {self.announcement_image.name}\"",
         "detail": "api.models",
         "documentation": {}
     },
@@ -761,7 +811,16 @@
         "kind": 6,
         "importPath": "api.serializers",
         "description": "api.serializers",
-        "peekOfCode": "class ServiceWithProvidersSerializer(serializers.ModelSerializer):\n    providers = ProviderSerializer(many=True, read_only=True, source='provider_set')\n    class Meta:\n        model = Service\n        fields = ['id', 'name', 'providers']\n        extra_kwargs = {\n            'id': {'read_only': True}  # Make id read_only\n        }\nclass AlertSerializer(serializers.ModelSerializer):\n    class Meta:",
+        "peekOfCode": "class ServiceWithProvidersSerializer(serializers.ModelSerializer):\n    providers = ProviderSerializer(many=True, read_only=True, source='provider_set')\n    class Meta:\n        model = Service\n        fields = ['id', 'name', 'providers']\n        extra_kwargs = {\n            'id': {'read_only': True}  # Make id read_only\n        }\n# class AlertSerializer(serializers.ModelSerializer):\n#     class Meta:",
+        "detail": "api.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "AlertAttachmentSerializer",
+        "kind": 6,
+        "importPath": "api.serializers",
+        "description": "api.serializers",
+        "peekOfCode": "class AlertAttachmentSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = AlertAttachment\n        fields = ['id', 'announcement_image']\n        extra_kwargs = {'id': {'read_only': True}}\nclass AlertSerializer(serializers.ModelSerializer):\n    announcement_image = serializers.ListField(\n        child=serializers.FileField(),\n        write_only=True,\n        required=False",
         "detail": "api.serializers",
         "documentation": {}
     },
@@ -770,7 +829,7 @@
         "kind": 6,
         "importPath": "api.serializers",
         "description": "api.serializers",
-        "peekOfCode": "class AlertSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = Alert\n        fields = ['id', 'title', 'category', 'message', 'public_date', 'estate', 'role', 'announcement_image', 'created_at']\n        extra_kwargs = {\n            'id': {'read_only': True},\n            'created_at': {'read_only': True}\n        }",
+        "peekOfCode": "class AlertSerializer(serializers.ModelSerializer):\n    announcement_image = serializers.ListField(\n        child=serializers.FileField(),\n        write_only=True,\n        required=False\n    )\n    attachments = AlertAttachmentSerializer(many=True, read_only=True, source='announcement_image')\n    class Meta:\n        model = Alert\n        fields = [",
         "detail": "api.serializers",
         "documentation": {}
     },
