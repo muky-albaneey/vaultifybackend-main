@@ -1018,7 +1018,7 @@
         "kind": 5,
         "importPath": "backend.settings",
         "description": "backend.settings",
-        "peekOfCode": "DEBUG = True\n# ALLOWED_HOSTS = [\n#     \"vaultify-43wm.onrender.com\",       # your backend's Render domain\n#     \"vaultifybackend.onrender.com\",         # optional - your custom domain if any\n#     \"localhost\",                        # optional - for local testing\n#     \"127.0.0.1\",                        # optional - for local testing\n# ]\nALLOWED_HOSTS = ['*']\nCORS_ALLOW_ALL_ORIGINS = True\n# Application definition",
+        "peekOfCode": "DEBUG = True\n# ALLOWED_HOSTS = [\n#     \"vaultify-43wm.onrender.com\",       # your backend's Render domain\n#     \"vaultifybackend.onrender.com\",         # optional - your custom domain if any\n#     \"localhost\",                        # optional - for local testing\n#     \"127.0.0.1\",                        # optional - for local testing\n# ]\nALLOWED_HOSTS = ['*']\nCORS_ALLOW_ALL_ORIGINS = False  # disable wildcard\nCORS_ALLOW_CREDENTIALS = True",
         "detail": "backend.settings",
         "documentation": {}
     },
@@ -1027,7 +1027,7 @@
         "kind": 5,
         "importPath": "backend.settings",
         "description": "backend.settings",
-        "peekOfCode": "ALLOWED_HOSTS = ['*']\nCORS_ALLOW_ALL_ORIGINS = True\n# Application definition\nCORS_ALLOW_CREDENTIALS = False\nCSRF_TRUSTED_ORIGINS = ['*']  # if you want to allow all origins (adjust carefully)\nCORS_ALLOWED_ORIGINS =['*']\n# Or set the CSRF middleware to do nothing (not recommended)\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',",
+        "peekOfCode": "ALLOWED_HOSTS = ['*']\nCORS_ALLOW_ALL_ORIGINS = False  # disable wildcard\nCORS_ALLOW_CREDENTIALS = True\nCORS_ALLOWED_ORIGINS = [\n    \"http://localhost:5173\",  # your frontend dev server\n    \"https://vaultifyadmin.onrender.com\",  # your deployed frontend (if any)\n]\nCSRF_TRUSTED_ORIGINS = [\n    \"http://localhost:5173\",\n    \"https://vaultifyadmin.onrender.com\",",
         "detail": "backend.settings",
         "documentation": {}
     },
@@ -1036,7 +1036,7 @@
         "kind": 5,
         "importPath": "backend.settings",
         "description": "backend.settings",
-        "peekOfCode": "CORS_ALLOW_ALL_ORIGINS = True\n# Application definition\nCORS_ALLOW_CREDENTIALS = False\nCSRF_TRUSTED_ORIGINS = ['*']  # if you want to allow all origins (adjust carefully)\nCORS_ALLOWED_ORIGINS =['*']\n# Or set the CSRF middleware to do nothing (not recommended)\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',",
+        "peekOfCode": "CORS_ALLOW_ALL_ORIGINS = False  # disable wildcard\nCORS_ALLOW_CREDENTIALS = True\nCORS_ALLOWED_ORIGINS = [\n    \"http://localhost:5173\",  # your frontend dev server\n    \"https://vaultifyadmin.onrender.com\",  # your deployed frontend (if any)\n]\nCSRF_TRUSTED_ORIGINS = [\n    \"http://localhost:5173\",\n    \"https://vaultifyadmin.onrender.com\",\n]",
         "detail": "backend.settings",
         "documentation": {}
     },
@@ -1045,7 +1045,16 @@
         "kind": 5,
         "importPath": "backend.settings",
         "description": "backend.settings",
-        "peekOfCode": "CORS_ALLOW_CREDENTIALS = False\nCSRF_TRUSTED_ORIGINS = ['*']  # if you want to allow all origins (adjust carefully)\nCORS_ALLOWED_ORIGINS =['*']\n# Or set the CSRF middleware to do nothing (not recommended)\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',",
+        "peekOfCode": "CORS_ALLOW_CREDENTIALS = True\nCORS_ALLOWED_ORIGINS = [\n    \"http://localhost:5173\",  # your frontend dev server\n    \"https://vaultifyadmin.onrender.com\",  # your deployed frontend (if any)\n]\nCSRF_TRUSTED_ORIGINS = [\n    \"http://localhost:5173\",\n    \"https://vaultifyadmin.onrender.com\",\n]\n# Or set the CSRF middleware to do nothing (not recommended)",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "CORS_ALLOWED_ORIGINS",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "CORS_ALLOWED_ORIGINS = [\n    \"http://localhost:5173\",  # your frontend dev server\n    \"https://vaultifyadmin.onrender.com\",  # your deployed frontend (if any)\n]\nCSRF_TRUSTED_ORIGINS = [\n    \"http://localhost:5173\",\n    \"https://vaultifyadmin.onrender.com\",\n]\n# Or set the CSRF middleware to do nothing (not recommended)\nINSTALLED_APPS = [",
         "detail": "backend.settings",
         "documentation": {}
     },
@@ -1054,7 +1063,7 @@
         "kind": 5,
         "importPath": "backend.settings",
         "description": "backend.settings",
-        "peekOfCode": "CSRF_TRUSTED_ORIGINS = ['*']  # if you want to allow all origins (adjust carefully)\nCORS_ALLOWED_ORIGINS =['*']\n# Or set the CSRF middleware to do nothing (not recommended)\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',",
+        "peekOfCode": "CSRF_TRUSTED_ORIGINS = [\n    \"http://localhost:5173\",\n    \"https://vaultifyadmin.onrender.com\",\n]\n# Or set the CSRF middleware to do nothing (not recommended)\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',",
         "detail": "backend.settings",
         "documentation": {}
     },

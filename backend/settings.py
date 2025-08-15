@@ -34,11 +34,19 @@ DEBUG = True
 #     "127.0.0.1",                        # optional - for local testing
 # ]
 ALLOWED_HOSTS = ['*']
-CORS_ALLOW_ALL_ORIGINS = True
-# Application definition
-CORS_ALLOW_CREDENTIALS = False
-CSRF_TRUSTED_ORIGINS = ['*']  # if you want to allow all origins (adjust carefully)
-CORS_ALLOWED_ORIGINS =['*']
+CORS_ALLOW_ALL_ORIGINS = False  # disable wildcard
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",  # your frontend dev server
+    "https://vaultifyadmin.onrender.com",  # your deployed frontend (if any)
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:5173",
+    "https://vaultifyadmin.onrender.com",
+]
+
 # Or set the CSRF middleware to do nothing (not recommended)
 
 INSTALLED_APPS = [
