@@ -104,6 +104,15 @@ def get_paradise_and_range_view_admins(request):
         admins = Admin.objects.none()
     serializer = AdminSerializer(admins, many=True)
     return Response(serializer.data)
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+
+class ServiceListCreateView(ListCreateAPIView):
+    queryset = Service.objects.all()
+    serializer_class = ServiceSerializer
+
+class ServiceRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):
+    queryset = Service.objects.all()
+    serializer_class = ServiceSerializer
 
 class ServiceListView(ListAPIView):
     queryset = Service.objects.all()
@@ -111,9 +120,20 @@ class ServiceListView(ListAPIView):
 
 from rest_framework.views import APIView
 
+# views.py
+from django.db.models import Prefetch
+
 class ServiceWithProvidersView(APIView):
     def get(self, request):
-        services = Service.objects.all()
+        services = (
+            Service.objects
+            .prefetch_related(
+                Prefetch(
+                    'providers',  # <-- matches related_name on Provider.service
+                    queryset=Provider.objects.select_related('service', 'admin').order_by('provider_name')
+                )
+            )
+        )
         serializer = ServiceWithProvidersSerializer(services, many=True)
         return Response(serializer.data)
 
@@ -121,45 +141,95 @@ from rest_framework.generics import RetrieveUpdateDestroyAPIView
 from rest_framework.decorators import api_view
 from django.shortcuts import get_object_or_404
 
+from rest_framework.generics import ListCreateAPIView
+from rest_framework.response import Response
+from rest_framework import status
+
 class ProviderListCreateView(ListCreateAPIView):
     serializer_class = ProviderSerializer
-    queryset = Provider.objects.all()  # Default queryset
+    queryset = Provider.objects.select_related('service', 'admin').all()  # small perf win
 
     def get_queryset(self):
         service_name = self.request.query_params.get('service_name')
         admin_id = self.request.query_params.get('admin_id')
-        queryset = Provider.objects.all()
+        qs = self.queryset
         if service_name:
-            queryset = queryset.filter(service__name=service_name)
+            qs = qs.filter(service__name__iexact=service_name.strip())  # case-insensitive
         if admin_id:
-            queryset = queryset.filter(admin__id=admin_id)
-        return queryset
+            qs = qs.filter(admin__id=admin_id)
+        return qs
 
     def create(self, request, *args, **kwargs):
         data = request.data.copy()
-        service_name = data.get('service_name')
+        service_name_raw = (data.get('service_name') or '').strip()
         admin_id = data.get('admin_id')
-        if not service_name:
+
+        if not service_name_raw:
             return Response({"error": "service_name is required"}, status=status.HTTP_400_BAD_REQUEST)
         if not admin_id:
             return Response({"error": "admin_id is required"}, status=status.HTTP_400_BAD_REQUEST)
-        try:
-            service = Service.objects.get(name=service_name)
-        except Service.DoesNotExist:
-            return Response({"error": "Service not found"}, status=status.HTTP_400_BAD_REQUEST)
-        try:
-            admin = Admin.objects.get(id=admin_id)
-        except Admin.DoesNotExist:
+
+        # normalize & resolve service (case-insensitive)
+        normalized = ' '.join(service_name_raw.split())
+        service = Service.objects.filter(name__iexact=normalized).first()
+        if not service:
+            # auto-create if not found
+            service = Service.objects.create(name=normalized)
+
+        # resolve admin
+        admin = Admin.objects.filter(id=admin_id).first()
+        if not admin:
             return Response({"error": "Admin not found"}, status=status.HTTP_400_BAD_REQUEST)
-        data['service_id'] = service.id
-        data['admin'] = admin.id
-        if 'service' in data:
-            del data['service']
+
+        # match ProviderSerializer write fields
+        data['service_id'] = service.id   # source='service'
+        data['admin'] = admin.id          # FK id
+        data.pop('service_name', None)    # client-only key
+
         serializer = self.get_serializer(data=data)
-        if not serializer.is_valid():
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+# class ProviderListCreateView(ListCreateAPIView):
+#     serializer_class = ProviderSerializer
+#     queryset = Provider.objects.all()  # Default queryset
+
+#     def get_queryset(self):
+#         service_name = self.request.query_params.get('service_name')
+#         admin_id = self.request.query_params.get('admin_id')
+#         queryset = Provider.objects.all()
+#         if service_name:
+#             queryset = queryset.filter(service__name=service_name)
+#         if admin_id:
+#             queryset = queryset.filter(admin__id=admin_id)
+#         return queryset
+
+#     def create(self, request, *args, **kwargs):
+#         data = request.data.copy()
+#         service_name = data.get('service_name')
+#         admin_id = data.get('admin_id')
+#         if not service_name:
+#             return Response({"error": "service_name is required"}, status=status.HTTP_400_BAD_REQUEST)
+#         if not admin_id:
+#             return Response({"error": "admin_id is required"}, status=status.HTTP_400_BAD_REQUEST)
+#         try:
+#             service = Service.objects.get(name=service_name)
+#         except Service.DoesNotExist:
+#             return Response({"error": "Service not found"}, status=status.HTTP_400_BAD_REQUEST)
+#         try:
+#             admin = Admin.objects.get(id=admin_id)
+#         except Admin.DoesNotExist:
+#             return Response({"error": "Admin not found"}, status=status.HTTP_400_BAD_REQUEST)
+#         data['service_id'] = service.id
+#         data['admin'] = admin.id
+#         if 'service' in data:
+#             del data['service']
+#         serializer = self.get_serializer(data=data)
+#         if not serializer.is_valid():
+#             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+#         self.perform_create(serializer)
+#         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 class ProviderRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):
     queryset = Provider.objects.all()

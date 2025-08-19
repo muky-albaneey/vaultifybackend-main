@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import get_user_data, register_admin, get_all_admin, login_admin, ServiceListView, ProviderListCreateView, ServiceWithProvidersView, ProviderRetrieveUpdateDestroyView, get_range_view_admins, get_paradise_admins, delete_admin, get_paradise_and_range_view_admins, get_update_admin_by_id, ServiceProvidersByEstateView, AlertListCreateView, AlertRetrieveUpdateDestroyView
+from .views import get_user_data, register_admin, get_all_admin, login_admin, ServiceListView, ServiceListCreateView, ServiceRetrieveUpdateDestroyView, ProviderListCreateView, ServiceWithProvidersView, ProviderRetrieveUpdateDestroyView, get_range_view_admins, get_paradise_admins, delete_admin, get_paradise_and_range_view_admins, get_update_admin_by_id, ServiceProvidersByEstateView, AlertListCreateView, AlertRetrieveUpdateDestroyView
 from rest_framework_simplejwt.views import TokenRefreshView
 
 urlpatterns = [
@@ -16,11 +16,12 @@ urlpatterns = [
 
     # Removed is_auth endpoint as per user request
     path('services/', ServiceListView.as_view(), name='service-list'),
+    path('service_create/', ServiceListCreateView.as_view(), name='service-list-create'),
+    path('services/<int:pk>/', ServiceRetrieveUpdateDestroyView.as_view(), name='service-detail'),
     path('services-with-providers/', ServiceWithProvidersView.as_view(), name='services-with-providers'),
     path('providers/', ProviderListCreateView.as_view(), name='provider-list-create'),
     path('providers/<int:pk>/', ProviderRetrieveUpdateDestroyView.as_view(), name='provider-detail'),
     path('services-by-estate/', ServiceProvidersByEstateView.as_view(), name='services-by-estate'),
     path('alerts/', AlertListCreateView.as_view(), name='alert-list-create'),
     path('alerts/<int:pk>/', AlertRetrieveUpdateDestroyView.as_view(), name='alert-detail'),
-
 ]

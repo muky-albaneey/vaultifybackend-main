@@ -48,15 +48,22 @@ class ProviderSerializer(serializers.ModelSerializer):
             'id': {'read_only': True}  # Make id read_only
         }
 
+# class ServiceWithProvidersSerializer(serializers.ModelSerializer):
+#     providers = ProviderSerializer(many=True, read_only=True, source='provider_set')
+
+#     class Meta:
+#         model = Service
+#         fields = ['id', 'name', 'providers']
+#         extra_kwargs = {
+#             'id': {'read_only': True}  # Make id read_only
+#         }
+# serializers.py
 class ServiceWithProvidersSerializer(serializers.ModelSerializer):
-    providers = ProviderSerializer(many=True, read_only=True, source='provider_set')
+    providers = ProviderSerializer(many=True, read_only=True)  # uses related_name='providers'
 
     class Meta:
         model = Service
         fields = ['id', 'name', 'providers']
-        extra_kwargs = {
-            'id': {'read_only': True}  # Make id read_only
-        }
 
 # class AlertSerializer(serializers.ModelSerializer):
 #     class Meta:
@@ -66,6 +73,7 @@ class ServiceWithProvidersSerializer(serializers.ModelSerializer):
 #             'id': {'read_only': True},
 #             'created_at': {'read_only': True}
 #         }
+
 from rest_framework import serializers
 from .models import Alert, AlertAttachment
 

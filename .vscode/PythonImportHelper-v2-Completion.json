@@ -266,6 +266,14 @@
         "documentation": {}
     },
     {
+        "label": "status",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
         "label": "TestCase",
         "importPath": "django.test",
         "description": "django.test",
@@ -394,6 +402,14 @@
         "documentation": {}
     },
     {
+        "label": "Response",
+        "importPath": "rest_framework.response",
+        "description": "rest_framework.response",
+        "isExtraImport": true,
+        "detail": "rest_framework.response",
+        "documentation": {}
+    },
+    {
         "label": "APIView",
         "importPath": "rest_framework.views",
         "description": "rest_framework.views",
@@ -434,7 +450,31 @@
         "documentation": {}
     },
     {
+        "label": "ListCreateAPIView",
+        "importPath": "rest_framework.generics",
+        "description": "rest_framework.generics",
+        "isExtraImport": true,
+        "detail": "rest_framework.generics",
+        "documentation": {}
+    },
+    {
         "label": "RetrieveUpdateDestroyAPIView",
+        "importPath": "rest_framework.generics",
+        "description": "rest_framework.generics",
+        "isExtraImport": true,
+        "detail": "rest_framework.generics",
+        "documentation": {}
+    },
+    {
+        "label": "RetrieveUpdateDestroyAPIView",
+        "importPath": "rest_framework.generics",
+        "description": "rest_framework.generics",
+        "isExtraImport": true,
+        "detail": "rest_framework.generics",
+        "documentation": {}
+    },
+    {
+        "label": "ListCreateAPIView",
         "importPath": "rest_framework.generics",
         "description": "rest_framework.generics",
         "isExtraImport": true,
@@ -543,6 +583,14 @@
         "description": "rest_framework_simplejwt.tokens",
         "isExtraImport": true,
         "detail": "rest_framework_simplejwt.tokens",
+        "documentation": {}
+    },
+    {
+        "label": "Prefetch",
+        "importPath": "django.db.models",
+        "description": "django.db.models",
+        "isExtraImport": true,
+        "detail": "django.db.models",
         "documentation": {}
     },
     {
@@ -811,7 +859,7 @@
         "kind": 6,
         "importPath": "api.serializers",
         "description": "api.serializers",
-        "peekOfCode": "class ServiceWithProvidersSerializer(serializers.ModelSerializer):\n    providers = ProviderSerializer(many=True, read_only=True, source='provider_set')\n    class Meta:\n        model = Service\n        fields = ['id', 'name', 'providers']\n        extra_kwargs = {\n            'id': {'read_only': True}  # Make id read_only\n        }\n# class AlertSerializer(serializers.ModelSerializer):\n#     class Meta:",
+        "peekOfCode": "class ServiceWithProvidersSerializer(serializers.ModelSerializer):\n    providers = ProviderSerializer(many=True, read_only=True)  # uses related_name='providers'\n    class Meta:\n        model = Service\n        fields = ['id', 'name', 'providers']\n# class AlertSerializer(serializers.ModelSerializer):\n#     class Meta:\n#         model = Alert\n#         fields = ['id', 'title', 'category', 'message', 'public_date', 'estate', 'role', 'announcement_image', 'created_at']\n#         extra_kwargs = {",
         "detail": "api.serializers",
         "documentation": {}
     },
@@ -843,11 +891,29 @@
         "documentation": {}
     },
     {
+        "label": "ServiceListCreateView",
+        "kind": 6,
+        "importPath": "api.views",
+        "description": "api.views",
+        "peekOfCode": "class ServiceListCreateView(ListCreateAPIView):\n    queryset = Service.objects.all()\n    serializer_class = ServiceSerializer\nclass ServiceRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):\n    queryset = Service.objects.all()\n    serializer_class = ServiceSerializer\nclass ServiceListView(ListAPIView):\n    queryset = Service.objects.all()\n    serializer_class = ServiceSerializer\nfrom rest_framework.views import APIView",
+        "detail": "api.views",
+        "documentation": {}
+    },
+    {
+        "label": "ServiceRetrieveUpdateDestroyView",
+        "kind": 6,
+        "importPath": "api.views",
+        "description": "api.views",
+        "peekOfCode": "class ServiceRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):\n    queryset = Service.objects.all()\n    serializer_class = ServiceSerializer\nclass ServiceListView(ListAPIView):\n    queryset = Service.objects.all()\n    serializer_class = ServiceSerializer\nfrom rest_framework.views import APIView\n# views.py\nfrom django.db.models import Prefetch\nclass ServiceWithProvidersView(APIView):",
+        "detail": "api.views",
+        "documentation": {}
+    },
+    {
         "label": "ServiceListView",
         "kind": 6,
         "importPath": "api.views",
         "description": "api.views",
-        "peekOfCode": "class ServiceListView(ListAPIView):\n    queryset = Service.objects.all()\n    serializer_class = ServiceSerializer\nfrom rest_framework.views import APIView\nclass ServiceWithProvidersView(APIView):\n    def get(self, request):\n        services = Service.objects.all()\n        serializer = ServiceWithProvidersSerializer(services, many=True)\n        return Response(serializer.data)\nfrom rest_framework.generics import RetrieveUpdateDestroyAPIView",
+        "peekOfCode": "class ServiceListView(ListAPIView):\n    queryset = Service.objects.all()\n    serializer_class = ServiceSerializer\nfrom rest_framework.views import APIView\n# views.py\nfrom django.db.models import Prefetch\nclass ServiceWithProvidersView(APIView):\n    def get(self, request):\n        services = (\n            Service.objects",
         "detail": "api.views",
         "documentation": {}
     },
@@ -856,7 +922,7 @@
         "kind": 6,
         "importPath": "api.views",
         "description": "api.views",
-        "peekOfCode": "class ServiceWithProvidersView(APIView):\n    def get(self, request):\n        services = Service.objects.all()\n        serializer = ServiceWithProvidersSerializer(services, many=True)\n        return Response(serializer.data)\nfrom rest_framework.generics import RetrieveUpdateDestroyAPIView\nfrom rest_framework.decorators import api_view\nfrom django.shortcuts import get_object_or_404\nclass ProviderListCreateView(ListCreateAPIView):\n    serializer_class = ProviderSerializer",
+        "peekOfCode": "class ServiceWithProvidersView(APIView):\n    def get(self, request):\n        services = (\n            Service.objects\n            .prefetch_related(\n                Prefetch(\n                    'providers',  # <-- matches related_name on Provider.service\n                    queryset=Provider.objects.select_related('service', 'admin').order_by('provider_name')\n                )\n            )",
         "detail": "api.views",
         "documentation": {}
     },
@@ -865,7 +931,7 @@
         "kind": 6,
         "importPath": "api.views",
         "description": "api.views",
-        "peekOfCode": "class ProviderListCreateView(ListCreateAPIView):\n    serializer_class = ProviderSerializer\n    queryset = Provider.objects.all()  # Default queryset\n    def get_queryset(self):\n        service_name = self.request.query_params.get('service_name')\n        admin_id = self.request.query_params.get('admin_id')\n        queryset = Provider.objects.all()\n        if service_name:\n            queryset = queryset.filter(service__name=service_name)\n        if admin_id:",
+        "peekOfCode": "class ProviderListCreateView(ListCreateAPIView):\n    serializer_class = ProviderSerializer\n    queryset = Provider.objects.select_related('service', 'admin').all()  # small perf win\n    def get_queryset(self):\n        service_name = self.request.query_params.get('service_name')\n        admin_id = self.request.query_params.get('admin_id')\n        qs = self.queryset\n        if service_name:\n            qs = qs.filter(service__name__iexact=service_name.strip())  # case-insensitive\n        if admin_id:",
         "detail": "api.views",
         "documentation": {}
     },
