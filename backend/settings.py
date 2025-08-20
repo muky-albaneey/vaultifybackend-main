@@ -37,11 +37,11 @@ ALLOWED_HOSTS = ['*']
 CORS_ALLOW_ALL_ORIGINS = False  # disable wildcard
 CORS_ALLOW_CREDENTIALS = True
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",  # your frontend dev server
-    "https://vaultifyadmin.onrender.com",  # your deployed frontend (if any)
-]
-
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:5173",  # your frontend dev server
+#     "https://vaultifyadmin.onrender.com",  # your deployed frontend (if any)
+# ]
+CORS_ALLOWED_ORIGINS = ["*"]
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
     "https://vaultifyadmin.onrender.com",
