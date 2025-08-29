@@ -1139,7 +1139,7 @@
         "kind": 5,
         "importPath": "backend.settings",
         "description": "backend.settings",
-        "peekOfCode": "BASE_DIR = Path(__file__).resolve().parent.parent\nload_dotenv(os.path.join(BASE_DIR, '.env'))\nSECRET_KEY = 'django-insecure-q6)(9p#496c_-@lsvj-bni-l#$^u0cfy$fy^o6%6-3l_ie1rd5'\nDEBUG = True\n# ---------- HOSTS ----------\n# Put your real backend Render domain(s) here\nALLOWED_HOSTS = [\n    \"localhost\",\n    \"127.0.0.1\",\n    \"vaultifybackend.onrender.com\",   # ← replace/keep the one you actually have",
+        "peekOfCode": "BASE_DIR = Path(__file__).resolve().parent.parent\nload_dotenv(os.path.join(BASE_DIR, '.env'))\n# Quick-start development settings - unsuitable for production\n# See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/\n# SECURITY WARNING: keep the secret key used in production secret!\nSECRET_KEY = 'django-insecure-q6)(9p#496c_-@lsvj-bni-l#$^u0cfy$fy^o6%6-3l_ie1rd5'\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\n# ALLOWED_HOSTS = [\n#     \"vaultify-43wm.onrender.com\",       # your backend's Render domain",
         "detail": "backend.settings",
         "documentation": {}
     },
@@ -1148,7 +1148,7 @@
         "kind": 5,
         "importPath": "backend.settings",
         "description": "backend.settings",
-        "peekOfCode": "SECRET_KEY = 'django-insecure-q6)(9p#496c_-@lsvj-bni-l#$^u0cfy$fy^o6%6-3l_ie1rd5'\nDEBUG = True\n# ---------- HOSTS ----------\n# Put your real backend Render domain(s) here\nALLOWED_HOSTS = [\n    \"localhost\",\n    \"127.0.0.1\",\n    \"vaultifybackend.onrender.com\",   # ← replace/keep the one you actually have\n    \"vaultify-43wm.onrender.com\",     # ← if you use this one\n    \"vaultifyadmin.africa\",           # if you ever point backend here",
+        "peekOfCode": "SECRET_KEY = 'django-insecure-q6)(9p#496c_-@lsvj-bni-l#$^u0cfy$fy^o6%6-3l_ie1rd5'\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\n# ALLOWED_HOSTS = [\n#     \"vaultify-43wm.onrender.com\",       # your backend's Render domain\n#     \"vaultifybackend.onrender.com\",         # optional - your custom domain if any\n#     \"localhost\",                        # optional - for local testing\n#     \"127.0.0.1\",                        # optional - for local testing\n# ]\n# ALLOWED_HOSTS = ['*']",
         "detail": "backend.settings",
         "documentation": {}
     },
@@ -1157,16 +1157,7 @@
         "kind": 5,
         "importPath": "backend.settings",
         "description": "backend.settings",
-        "peekOfCode": "DEBUG = True\n# ---------- HOSTS ----------\n# Put your real backend Render domain(s) here\nALLOWED_HOSTS = [\n    \"localhost\",\n    \"127.0.0.1\",\n    \"vaultifybackend.onrender.com\",   # ← replace/keep the one you actually have\n    \"vaultify-43wm.onrender.com\",     # ← if you use this one\n    \"vaultifyadmin.africa\",           # if you ever point backend here\n]",
-        "detail": "backend.settings",
-        "documentation": {}
-    },
-    {
-        "label": "ALLOWED_HOSTS",
-        "kind": 5,
-        "importPath": "backend.settings",
-        "description": "backend.settings",
-        "peekOfCode": "ALLOWED_HOSTS = [\n    \"localhost\",\n    \"127.0.0.1\",\n    \"vaultifybackend.onrender.com\",   # ← replace/keep the one you actually have\n    \"vaultify-43wm.onrender.com\",     # ← if you use this one\n    \"vaultifyadmin.africa\",           # if you ever point backend here\n]\n# ---------- CORS & CSRF ----------\n# EXACT origins of your frontend(s); no trailing slash\nCORS_ALLOWED_ORIGINS = [",
+        "peekOfCode": "DEBUG = True\n# ALLOWED_HOSTS = [\n#     \"vaultify-43wm.onrender.com\",       # your backend's Render domain\n#     \"vaultifybackend.onrender.com\",         # optional - your custom domain if any\n#     \"localhost\",                        # optional - for local testing\n#     \"127.0.0.1\",                        # optional - for local testing\n# ]\n# ALLOWED_HOSTS = ['*']\n# CORS_ALLOW_ALL_ORIGINS = False  # disable wildcard\n# CORS_ALLOW_CREDENTIALS = True",
         "detail": "backend.settings",
         "documentation": {}
     },
@@ -1175,7 +1166,7 @@
         "kind": 5,
         "importPath": "backend.settings",
         "description": "backend.settings",
-        "peekOfCode": "CORS_ALLOWED_ORIGINS = [\n    \"http://localhost:5173\",\n    \"https://vaultifyadmin.africa\",\n    # \"https://vaultify-frontend.onrender.com\",  # ← add your real frontend Render domain if you have one\n]\n# If your frontend sends cookies (credentials: \"include\"), set True.\n# For JWT in Authorization header, keep False.\nCORS_ALLOW_CREDENTIALS = False\n# Allow Authorization header for JWT\nfrom corsheaders.defaults import default_headers",
+        "peekOfCode": "CORS_ALLOWED_ORIGINS = [\n    \"http://localhost:5173\",\n    \"https://vaultifyadmin.africa\",\n    # add your Render frontend domain if you have one, e.g.:\n    # \"https://vaultify-frontend.onrender.com\",\n]\n# If your frontend sends cookies (fetch with credentials: \"include\"),\n# set this to True; otherwise leave False for JWT via Authorization header.\nCORS_ALLOW_CREDENTIALS = False  # True only when using cookies/sessions\n# If you need the Authorization header (JWT), make sure it's allowed:",
         "detail": "backend.settings",
         "documentation": {}
     },
@@ -1184,7 +1175,7 @@
         "kind": 5,
         "importPath": "backend.settings",
         "description": "backend.settings",
-        "peekOfCode": "CORS_ALLOW_CREDENTIALS = False\n# Allow Authorization header for JWT\nfrom corsheaders.defaults import default_headers\nCORS_ALLOW_HEADERS = list(default_headers) + [\"authorization\"]\n# CSRF is needed only for cookie-based auth / Django admin behind a browser\nCSRF_TRUSTED_ORIGINS = [\n    \"http://localhost:5173\",\n    \"https://vaultifyadmin.africa\",\n    # \"https://vaultify-backend.onrender.com\",  # add your backend domain if you need admin via browser\n]",
+        "peekOfCode": "CORS_ALLOW_CREDENTIALS = False  # True only when using cookies/sessions\n# If you need the Authorization header (JWT), make sure it's allowed:\nfrom corsheaders.defaults import default_headers\nCORS_ALLOW_HEADERS = list(default_headers) + [\"authorization\"]\n# Optional: methods are fine by default, but you can be explicit:\n# from corsheaders.defaults import default_methods\n# CORS_ALLOW_METHODS = list(default_methods)\n# CSRF is only needed if you use cookie-based auth/SessionAuth.\n# Keep these for admin pages or if you later switch to cookies:\nCSRF_TRUSTED_ORIGINS = [",
         "detail": "backend.settings",
         "documentation": {}
     },
@@ -1193,7 +1184,7 @@
         "kind": 5,
         "importPath": "backend.settings",
         "description": "backend.settings",
-        "peekOfCode": "CORS_ALLOW_HEADERS = list(default_headers) + [\"authorization\"]\n# CSRF is needed only for cookie-based auth / Django admin behind a browser\nCSRF_TRUSTED_ORIGINS = [\n    \"http://localhost:5173\",\n    \"https://vaultifyadmin.africa\",\n    # \"https://vaultify-backend.onrender.com\",  # add your backend domain if you need admin via browser\n]\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',",
+        "peekOfCode": "CORS_ALLOW_HEADERS = list(default_headers) + [\"authorization\"]\n# Optional: methods are fine by default, but you can be explicit:\n# from corsheaders.defaults import default_methods\n# CORS_ALLOW_METHODS = list(default_methods)\n# CSRF is only needed if you use cookie-based auth/SessionAuth.\n# Keep these for admin pages or if you later switch to cookies:\nCSRF_TRUSTED_ORIGINS = [\n    \"http://localhost:5173\",\n    \"https://vaultifyadmin.africa\",\n    # \"https://vaultify-backend.onrender.com\",  # your backend custom domain if any",
         "detail": "backend.settings",
         "documentation": {}
     },
@@ -1202,7 +1193,16 @@
         "kind": 5,
         "importPath": "backend.settings",
         "description": "backend.settings",
-        "peekOfCode": "CSRF_TRUSTED_ORIGINS = [\n    \"http://localhost:5173\",\n    \"https://vaultifyadmin.africa\",\n    # \"https://vaultify-backend.onrender.com\",  # add your backend domain if you need admin via browser\n]\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',",
+        "peekOfCode": "CSRF_TRUSTED_ORIGINS = [\n    \"http://localhost:5173\",\n    \"https://vaultifyadmin.africa\",\n    # \"https://vaultify-backend.onrender.com\",  # your backend custom domain if any\n]\n# ---------- HOSTS ----------\n# Render will send requests from its domain; list them here.\nALLOWED_HOSTS = [\n    \"localhost\",\n    \"127.0.0.1\",",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "ALLOWED_HOSTS",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "ALLOWED_HOSTS = [\n    \"localhost\",\n    \"127.0.0.1\",\n    \"vaultify-backend.onrender.com\",  # replace with your actual backend Render domain\n    \"vaultifyadmin.africa\",           # if you terminate requests on this domain\n]\n# Or set the CSRF middleware to do nothing (not recommended)\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',",
         "detail": "backend.settings",
         "documentation": {}
     },
@@ -1220,7 +1220,7 @@
         "kind": 5,
         "importPath": "backend.settings",
         "description": "backend.settings",
-        "peekOfCode": "MIDDLEWARE = [\n    'corsheaders.middleware.CorsMiddleware',   # ← keep first\n    'django.middleware.security.SecurityMiddleware',\n    'django.contrib.sessions.middleware.SessionMiddleware',\n    'django.middleware.common.CommonMiddleware',\n    # 'django.middleware.csrf.CsrfViewMiddleware',  # enable only if you use cookies/CSRF\n    'django.contrib.auth.middleware.AuthenticationMiddleware',\n    'django.contrib.messages.middleware.MessageMiddleware',\n    'django.middleware.clickjacking.XFrameOptionsMiddleware',\n]",
+        "peekOfCode": "MIDDLEWARE = [\n    'corsheaders.middleware.CorsMiddleware',\n    'django.middleware.security.SecurityMiddleware',\n    'django.contrib.sessions.middleware.SessionMiddleware',  # sessions first\n    'django.middleware.common.CommonMiddleware',\n    # 'django.middleware.csrf.CsrfViewMiddleware',  # then CSRF middleware\n    'django.contrib.auth.middleware.AuthenticationMiddleware',\n    'django.contrib.messages.middleware.MessageMiddleware',\n    'django.middleware.clickjacking.XFrameOptionsMiddleware',\n]",
         "detail": "backend.settings",
         "documentation": {}
     },
@@ -1247,7 +1247,7 @@
         "kind": 5,
         "importPath": "backend.settings",
         "description": "backend.settings",
-        "peekOfCode": "WSGI_APPLICATION = 'backend.wsgi.application'\n# ----- DB -----\nimport dj_database_url\nDATABASES = {\n    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))\n}\n# ----- Auth / DRF -----\nAUTH_PASSWORD_VALIDATORS = [\n    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},\n    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},",
+        "peekOfCode": "WSGI_APPLICATION = 'backend.wsgi.application'\n# Database\n# https://docs.djangoproject.com/en/5.1/ref/settings/#databases\nimport dj_database_url\nimport os\nDATABASES = {\n    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))\n    # 'default': dj_database_url.config(default='postgresql://vaultifydb_user:bzCxP5iz8QoLX8g6tdyuSTNd3T9kps7b@dpg-d27fncuuk2gs73e4a7i0-a.oregon-postgres.render.com/vaultifydb')\n}\n# DATABASES = {",
         "detail": "backend.settings",
         "documentation": {}
     },
@@ -1256,7 +1256,7 @@
         "kind": 5,
         "importPath": "backend.settings",
         "description": "backend.settings",
-        "peekOfCode": "DATABASES = {\n    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))\n}\n# ----- Auth / DRF -----\nAUTH_PASSWORD_VALIDATORS = [\n    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},\n    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},\n    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},\n    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},\n]",
+        "peekOfCode": "DATABASES = {\n    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))\n    # 'default': dj_database_url.config(default='postgresql://vaultifydb_user:bzCxP5iz8QoLX8g6tdyuSTNd3T9kps7b@dpg-d27fncuuk2gs73e4a7i0-a.oregon-postgres.render.com/vaultifydb')\n}\n# DATABASES = {\n#     'default': {\n#         'ENGINE': 'django.db.backends.postgresql',\n#         'NAME': 'vaultifyadmindb',\n#         'USER': 'vaultifyadmindb_user',\n#         'PASSWORD': 'sZiDhg7pVWRcSrRJdGPijKqymHZGbLZT',",
         "detail": "backend.settings",
         "documentation": {}
     },
@@ -1265,7 +1265,7 @@
         "kind": 5,
         "importPath": "backend.settings",
         "description": "backend.settings",
-        "peekOfCode": "AUTH_PASSWORD_VALIDATORS = [\n    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},\n    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},\n    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},\n    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},\n]\nLANGUAGE_CODE = 'en-us'\nTIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True",
+        "peekOfCode": "AUTH_PASSWORD_VALIDATORS = [\n    {\n        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',\n    },\n    {\n        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',\n    },\n    {\n        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',\n    },",
         "detail": "backend.settings",
         "documentation": {}
     },
@@ -1274,7 +1274,7 @@
         "kind": 5,
         "importPath": "backend.settings",
         "description": "backend.settings",
-        "peekOfCode": "LANGUAGE_CODE = 'en-us'\nTIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\nSTATIC_URL = 'static/'\nSTATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')\nSTATICFILES_DIRS = [BASE_DIR / \"static\"]\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': (",
+        "peekOfCode": "LANGUAGE_CODE = 'en-us'\nTIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = 'static/'\nSTATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')\nSTATICFILES_DIRS = [BASE_DIR / \"static\"]\n# Default primary key field type",
         "detail": "backend.settings",
         "documentation": {}
     },
@@ -1283,7 +1283,7 @@
         "kind": 5,
         "importPath": "backend.settings",
         "description": "backend.settings",
-        "peekOfCode": "TIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\nSTATIC_URL = 'static/'\nSTATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')\nSTATICFILES_DIRS = [BASE_DIR / \"static\"]\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': (\n        'rest_framework_simplejwt.authentication.JWTAuthentication',",
+        "peekOfCode": "TIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = 'static/'\nSTATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')\nSTATICFILES_DIRS = [BASE_DIR / \"static\"]\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field",
         "detail": "backend.settings",
         "documentation": {}
     },
@@ -1292,7 +1292,7 @@
         "kind": 5,
         "importPath": "backend.settings",
         "description": "backend.settings",
-        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\nSTATIC_URL = 'static/'\nSTATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')\nSTATICFILES_DIRS = [BASE_DIR / \"static\"]\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': (\n        'rest_framework_simplejwt.authentication.JWTAuthentication',\n    ),",
+        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = 'static/'\nSTATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')\nSTATICFILES_DIRS = [BASE_DIR / \"static\"]\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
         "detail": "backend.settings",
         "documentation": {}
     },
@@ -1301,7 +1301,7 @@
         "kind": 5,
         "importPath": "backend.settings",
         "description": "backend.settings",
-        "peekOfCode": "USE_TZ = True\nSTATIC_URL = 'static/'\nSTATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')\nSTATICFILES_DIRS = [BASE_DIR / \"static\"]\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': (\n        'rest_framework_simplejwt.authentication.JWTAuthentication',\n    ),\n    'DEFAULT_PERMISSION_CLASSES': (",
+        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = 'static/'\nSTATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')\nSTATICFILES_DIRS = [BASE_DIR / \"static\"]\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n# Django REST Framework configuration with JWT Authentication",
         "detail": "backend.settings",
         "documentation": {}
     },
@@ -1310,7 +1310,7 @@
         "kind": 5,
         "importPath": "backend.settings",
         "description": "backend.settings",
-        "peekOfCode": "STATIC_URL = 'static/'\nSTATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')\nSTATICFILES_DIRS = [BASE_DIR / \"static\"]\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': (\n        'rest_framework_simplejwt.authentication.JWTAuthentication',\n    ),\n    'DEFAULT_PERMISSION_CLASSES': (\n        'rest_framework.permissions.AllowAny',",
+        "peekOfCode": "STATIC_URL = 'static/'\nSTATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')\nSTATICFILES_DIRS = [BASE_DIR / \"static\"]\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n# Django REST Framework configuration with JWT Authentication\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': (\n        'rest_framework_simplejwt.authentication.JWTAuthentication',",
         "detail": "backend.settings",
         "documentation": {}
     },
@@ -1319,7 +1319,7 @@
         "kind": 5,
         "importPath": "backend.settings",
         "description": "backend.settings",
-        "peekOfCode": "STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')\nSTATICFILES_DIRS = [BASE_DIR / \"static\"]\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': (\n        'rest_framework_simplejwt.authentication.JWTAuthentication',\n    ),\n    'DEFAULT_PERMISSION_CLASSES': (\n        'rest_framework.permissions.AllowAny',\n    ),",
+        "peekOfCode": "STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')\nSTATICFILES_DIRS = [BASE_DIR / \"static\"]\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n# Django REST Framework configuration with JWT Authentication\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': (\n        'rest_framework_simplejwt.authentication.JWTAuthentication',\n    ),",
         "detail": "backend.settings",
         "documentation": {}
     },
@@ -1328,7 +1328,7 @@
         "kind": 5,
         "importPath": "backend.settings",
         "description": "backend.settings",
-        "peekOfCode": "STATICFILES_DIRS = [BASE_DIR / \"static\"]\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': (\n        'rest_framework_simplejwt.authentication.JWTAuthentication',\n    ),\n    'DEFAULT_PERMISSION_CLASSES': (\n        'rest_framework.permissions.AllowAny',\n    ),\n    'DEFAULT_RENDERER_CLASSES': (",
+        "peekOfCode": "STATICFILES_DIRS = [BASE_DIR / \"static\"]\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n# Django REST Framework configuration with JWT Authentication\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': (\n        'rest_framework_simplejwt.authentication.JWTAuthentication',\n    ),\n    'DEFAULT_PERMISSION_CLASSES': (",
         "detail": "backend.settings",
         "documentation": {}
     },
@@ -1337,7 +1337,7 @@
         "kind": 5,
         "importPath": "backend.settings",
         "description": "backend.settings",
-        "peekOfCode": "DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': (\n        'rest_framework_simplejwt.authentication.JWTAuthentication',\n    ),\n    'DEFAULT_PERMISSION_CLASSES': (\n        'rest_framework.permissions.AllowAny',\n    ),\n    'DEFAULT_RENDERER_CLASSES': (\n        'rest_framework.renderers.JSONRenderer',",
+        "peekOfCode": "DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n# Django REST Framework configuration with JWT Authentication\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': (\n        'rest_framework_simplejwt.authentication.JWTAuthentication',\n    ),\n    'DEFAULT_PERMISSION_CLASSES': (\n        'rest_framework.permissions.AllowAny',  # or your custom permissions\n    ),\n    'DEFAULT_RENDERER_CLASSES': (",
         "detail": "backend.settings",
         "documentation": {}
     },
@@ -1346,7 +1346,7 @@
         "kind": 5,
         "importPath": "backend.settings",
         "description": "backend.settings",
-        "peekOfCode": "REST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': (\n        'rest_framework_simplejwt.authentication.JWTAuthentication',\n    ),\n    'DEFAULT_PERMISSION_CLASSES': (\n        'rest_framework.permissions.AllowAny',\n    ),\n    'DEFAULT_RENDERER_CLASSES': (\n        'rest_framework.renderers.JSONRenderer',\n    ),",
+        "peekOfCode": "REST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': (\n        'rest_framework_simplejwt.authentication.JWTAuthentication',\n    ),\n    'DEFAULT_PERMISSION_CLASSES': (\n        'rest_framework.permissions.AllowAny',  # or your custom permissions\n    ),\n    'DEFAULT_RENDERER_CLASSES': (\n        'rest_framework.renderers.JSONRenderer',\n    ),",
         "detail": "backend.settings",
         "documentation": {}
     },
