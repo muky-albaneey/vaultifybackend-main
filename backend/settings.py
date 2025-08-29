@@ -41,7 +41,7 @@ CORS_ALLOW_CREDENTIALS = True
 #     "http://localhost:5173",  
 #     "https://vaultifyadmin.africa/"
 # ]
-# CORS_ALLOWED_ORIGINS = ["*"]
+CORS_ALLOWED_ORIGINS = ["*"]
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
     "https://vaultifyadmin.africa/",
