@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import get_user_data, register_admin, get_all_admin, login_admin, ServiceListView, ServiceListCreateView, ServiceRetrieveUpdateDestroyView, ProviderListCreateView, ServiceWithProvidersView, ProviderRetrieveUpdateDestroyView, get_range_view_admins, get_paradise_admins, delete_admin, get_paradise_and_range_view_admins, get_update_admin_by_id, ServiceProvidersByEstateView, AlertListCreateView, AlertRetrieveUpdateDestroyView
+from .views import get_user_data, register_admin, get_all_admin, login_admin, ServiceListView, ServiceListCreateView, ServiceRetrieveUpdateDestroyView, ProviderListCreateView, ServiceWithProvidersView,ProviderReviewListCreateView, ProviderRetrieveUpdateDestroyView, get_range_view_admins, get_paradise_admins, delete_admin, get_paradise_and_range_view_admins, get_update_admin_by_id, ServiceProvidersByEstateView, AlertListCreateView, AlertRetrieveUpdateDestroyView
 from rest_framework_simplejwt.views import TokenRefreshView
 
 urlpatterns = [
@@ -22,6 +22,8 @@ urlpatterns = [
     path('providers/', ProviderListCreateView.as_view(), name='provider-list-create'),
     path('providers/<int:pk>/', ProviderRetrieveUpdateDestroyView.as_view(), name='provider-detail'),
     path('services-by-estate/', ServiceProvidersByEstateView.as_view(), name='services-by-estate'),
+    # urls.py
+path('providers/<int:provider_id>/reviews/', ProviderReviewListCreateView.as_view()),
     path('alerts/', AlertListCreateView.as_view(), name='alert-list-create'),
     path('alerts/<int:pk>/', AlertRetrieveUpdateDestroyView.as_view(), name='alert-detail'),
 ]

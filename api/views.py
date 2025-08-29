@@ -104,8 +104,28 @@ def get_paradise_and_range_view_admins(request):
         admins = Admin.objects.none()
     serializer = AdminSerializer(admins, many=True)
     return Response(serializer.data)
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 
+
+# views.py
+from rest_framework import status
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from rest_framework.generics import (
+    ListAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView
+)
+from rest_framework.parsers import MultiPartParser, FormParser
+from django.shortcuts import get_object_or_404
+from django.db.models import Prefetch
+
+from .models import Admin, Service, Provider, ProviderPhoto, ProviderReview, Alert
+from .serializers import (
+    AdminSerializer, ServiceSerializer, ProviderSerializer,
+    ServiceWithProvidersSerializer, AlertSerializer, ProviderReviewSerializer
+)
+
+# --- services (unchanged) ---
 class ServiceListCreateView(ListCreateAPIView):
     queryset = Service.objects.all()
     serializer_class = ServiceSerializer
@@ -118,148 +138,102 @@ class ServiceListView(ListAPIView):
     queryset = Service.objects.all()
     serializer_class = ServiceSerializer
 
-from rest_framework.views import APIView
 
-# views.py
-from django.db.models import Prefetch
-
+# --- services + providers combined (prefetch photos & reviews) ---
 class ServiceWithProvidersView(APIView):
     def get(self, request):
         services = (
-            Service.objects
-            .prefetch_related(
-                Prefetch(
-                    'providers',  # <-- matches related_name on Provider.service
-                    queryset=Provider.objects.select_related('service', 'admin').order_by('provider_name')
-                )
+            Service.objects.prefetch_related(
+                Prefetch('providers',
+                         queryset=Provider.objects
+                         .select_related('service', 'admin')
+                         .prefetch_related('photos', 'reviews')
+                         .order_by('last_name', 'first_name'))
             )
         )
         serializer = ServiceWithProvidersSerializer(services, many=True)
         return Response(serializer.data)
 
-from rest_framework.generics import RetrieveUpdateDestroyAPIView
-from rest_framework.decorators import api_view
-from django.shortcuts import get_object_or_404
 
-from rest_framework.generics import ListCreateAPIView
-from rest_framework.response import Response
-from rest_framework import status
-
+# --- providers ---
 class ProviderListCreateView(ListCreateAPIView):
     serializer_class = ProviderSerializer
-    queryset = Provider.objects.select_related('service', 'admin').all()  # small perf win
+    queryset = Provider.objects.select_related('service', 'admin').prefetch_related('photos', 'reviews')
+    parser_classes = [MultiPartParser, FormParser]   # handle images
 
     def get_queryset(self):
         service_name = self.request.query_params.get('service_name')
         admin_id = self.request.query_params.get('admin_id')
         qs = self.queryset
         if service_name:
-            qs = qs.filter(service__name__iexact=service_name.strip())  # case-insensitive
+            qs = qs.filter(service__name__iexact=service_name.strip())
         if admin_id:
             qs = qs.filter(admin__id=admin_id)
         return qs
 
     def create(self, request, *args, **kwargs):
         data = request.data.copy()
+        # Input sugar: allow service_name instead of service_id
         service_name_raw = (data.get('service_name') or '').strip()
         admin_id = data.get('admin_id')
-
         if not service_name_raw:
             return Response({"error": "service_name is required"}, status=status.HTTP_400_BAD_REQUEST)
         if not admin_id:
             return Response({"error": "admin_id is required"}, status=status.HTTP_400_BAD_REQUEST)
 
-        # normalize & resolve service (case-insensitive)
         normalized = ' '.join(service_name_raw.split())
-        service = Service.objects.filter(name__iexact=normalized).first()
-        if not service:
-            # auto-create if not found
-            service = Service.objects.create(name=normalized)
+        service = Service.objects.filter(name__iexact=normalized).first() or Service.objects.create(name=normalized)
 
-        # resolve admin
         admin = Admin.objects.filter(id=admin_id).first()
         if not admin:
             return Response({"error": "Admin not found"}, status=status.HTTP_400_BAD_REQUEST)
 
-        # match ProviderSerializer write fields
-        data['service_id'] = service.id   # source='service'
-        data['admin'] = admin.id          # FK id
-        data.pop('service_name', None)    # client-only key
+        data['service_id'] = service.id
+        data['admin'] = admin.id
+        data.pop('service_name', None)
 
         serializer = self.get_serializer(data=data)
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-# class ProviderListCreateView(ListCreateAPIView):
-#     serializer_class = ProviderSerializer
-#     queryset = Provider.objects.all()  # Default queryset
-
-#     def get_queryset(self):
-#         service_name = self.request.query_params.get('service_name')
-#         admin_id = self.request.query_params.get('admin_id')
-#         queryset = Provider.objects.all()
-#         if service_name:
-#             queryset = queryset.filter(service__name=service_name)
-#         if admin_id:
-#             queryset = queryset.filter(admin__id=admin_id)
-#         return queryset
-
-#     def create(self, request, *args, **kwargs):
-#         data = request.data.copy()
-#         service_name = data.get('service_name')
-#         admin_id = data.get('admin_id')
-#         if not service_name:
-#             return Response({"error": "service_name is required"}, status=status.HTTP_400_BAD_REQUEST)
-#         if not admin_id:
-#             return Response({"error": "admin_id is required"}, status=status.HTTP_400_BAD_REQUEST)
-#         try:
-#             service = Service.objects.get(name=service_name)
-#         except Service.DoesNotExist:
-#             return Response({"error": "Service not found"}, status=status.HTTP_400_BAD_REQUEST)
-#         try:
-#             admin = Admin.objects.get(id=admin_id)
-#         except Admin.DoesNotExist:
-#             return Response({"error": "Admin not found"}, status=status.HTTP_400_BAD_REQUEST)
-#         data['service_id'] = service.id
-#         data['admin'] = admin.id
-#         if 'service' in data:
-#             del data['service']
-#         serializer = self.get_serializer(data=data)
-#         if not serializer.is_valid():
-#             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-#         self.perform_create(serializer)
-#         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 class ProviderRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):
-    queryset = Provider.objects.all()
+    queryset = Provider.objects.select_related('service', 'admin').prefetch_related('photos', 'reviews')
     serializer_class = ProviderSerializer
+    parser_classes = [MultiPartParser, FormParser]   # allow updating images
 
-from rest_framework.views import APIView
-from rest_framework.response import Response
 
+# (Optional) Reviews endpoint to power the “Reviews” tab
+class ProviderReviewListCreateView(ListCreateAPIView):
+    serializer_class = ProviderReviewSerializer
+
+    def get_queryset(self):
+        return ProviderReview.objects.filter(
+            provider_id=self.kwargs['provider_id']
+        ).order_by('-created_at')
+
+    def perform_create(self, serializer):
+        provider = get_object_or_404(Provider, pk=self.kwargs['provider_id'])
+        serializer.save(provider=provider)
+
+
+# Group providers by estate (adminRole) with new fields
 class ServiceProvidersByEstateView(APIView):
     def get(self, request):
         services = Service.objects.all()
         response_data = []
         for service in services:
-            providers = Provider.objects.filter(service=service)
             estate_dict = {}
-            for provider in providers:
-                try:
-                    estate = provider.admin.adminRole
-                except Exception:
-                    estate = "Unknown"
-                if estate not in estate_dict:
-                    estate_dict[estate] = []
-                estate_dict[estate].append({
-                    "id": provider.id,
-                    "provider_name": provider.provider_name,
-                    "email": provider.email,
-                    "phone": provider.phone,
-                    "location": provider.location,
-                    "availability": provider.availability,
-                    "service": provider.service.name,
+            for p in Provider.objects.filter(service=service).select_related('admin'):
+                estate = getattr(p.admin, 'adminRole', 'Unknown') or "Unknown"
+                estate_dict.setdefault(estate, []).append({
+                    "id": p.id,
+                    "full_name": f"{p.first_name} {p.last_name}",
+                    "phone": p.phone,
+                    "location": p.location,
+                    "availability": p.availability,
+                    "service": p.service.name,
                 })
             response_data.append({
                 "service_id": service.id,
@@ -267,6 +241,130 @@ class ServiceProvidersByEstateView(APIView):
                 "estates": estate_dict
             })
         return Response(response_data)
+
+# from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+
+# class ServiceListCreateView(ListCreateAPIView):
+#     queryset = Service.objects.all()
+#     serializer_class = ServiceSerializer
+
+# class ServiceRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):
+#     queryset = Service.objects.all()
+#     serializer_class = ServiceSerializer
+
+# class ServiceListView(ListAPIView):
+#     queryset = Service.objects.all()
+#     serializer_class = ServiceSerializer
+
+# from rest_framework.views import APIView
+
+# # views.py
+# from django.db.models import Prefetch
+
+# class ServiceWithProvidersView(APIView):
+#     def get(self, request):
+#         services = (
+#             Service.objects
+#             .prefetch_related(
+#                 Prefetch(
+#                     'providers',  # <-- matches related_name on Provider.service
+#                     queryset=Provider.objects.select_related('service', 'admin').order_by('provider_name')
+#                 )
+#             )
+#         )
+#         serializer = ServiceWithProvidersSerializer(services, many=True)
+#         return Response(serializer.data)
+
+# from rest_framework.generics import RetrieveUpdateDestroyAPIView
+# from rest_framework.decorators import api_view
+# from django.shortcuts import get_object_or_404
+
+# from rest_framework.generics import ListCreateAPIView
+# from rest_framework.response import Response
+# from rest_framework import status
+
+# class ProviderListCreateView(ListCreateAPIView):
+#     serializer_class = ProviderSerializer
+#     queryset = Provider.objects.select_related('service', 'admin').all()  # small perf win
+
+#     def get_queryset(self):
+#         service_name = self.request.query_params.get('service_name')
+#         admin_id = self.request.query_params.get('admin_id')
+#         qs = self.queryset
+#         if service_name:
+#             qs = qs.filter(service__name__iexact=service_name.strip())  # case-insensitive
+#         if admin_id:
+#             qs = qs.filter(admin__id=admin_id)
+#         return qs
+
+#     def create(self, request, *args, **kwargs):
+#         data = request.data.copy()
+#         service_name_raw = (data.get('service_name') or '').strip()
+#         admin_id = data.get('admin_id')
+
+#         if not service_name_raw:
+#             return Response({"error": "service_name is required"}, status=status.HTTP_400_BAD_REQUEST)
+#         if not admin_id:
+#             return Response({"error": "admin_id is required"}, status=status.HTTP_400_BAD_REQUEST)
+
+#         # normalize & resolve service (case-insensitive)
+#         normalized = ' '.join(service_name_raw.split())
+#         service = Service.objects.filter(name__iexact=normalized).first()
+#         if not service:
+#             # auto-create if not found
+#             service = Service.objects.create(name=normalized)
+
+#         # resolve admin
+#         admin = Admin.objects.filter(id=admin_id).first()
+#         if not admin:
+#             return Response({"error": "Admin not found"}, status=status.HTTP_400_BAD_REQUEST)
+
+#         # match ProviderSerializer write fields
+#         data['service_id'] = service.id   # source='service'
+#         data['admin'] = admin.id          # FK id
+#         data.pop('service_name', None)    # client-only key
+
+#         serializer = self.get_serializer(data=data)
+#         serializer.is_valid(raise_exception=True)
+#         self.perform_create(serializer)
+#         return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+# class ProviderRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):
+#     queryset = Provider.objects.all()
+#     serializer_class = ProviderSerializer
+
+# from rest_framework.views import APIView
+# from rest_framework.response import Response
+
+# class ServiceProvidersByEstateView(APIView):
+#     def get(self, request):
+#         services = Service.objects.all()
+#         response_data = []
+#         for service in services:
+#             providers = Provider.objects.filter(service=service)
+#             estate_dict = {}
+#             for provider in providers:
+#                 try:
+#                     estate = provider.admin.adminRole
+#                 except Exception:
+#                     estate = "Unknown"
+#                 if estate not in estate_dict:
+#                     estate_dict[estate] = []
+#                 estate_dict[estate].append({
+#                     "id": provider.id,
+#                     "provider_name": provider.provider_name,
+#                     "email": provider.email,
+#                     "phone": provider.phone,
+#                     "location": provider.location,
+#                     "availability": provider.availability,
+#                     "service": provider.service.name,
+#                 })
+#             response_data.append({
+#                 "service_id": service.id,
+#                 "service_name": service.name,
+#                 "estates": estate_dict
+#             })
+#         return Response(response_data)
 
 @api_view(['DELETE'])
 def delete_admin(request, id):

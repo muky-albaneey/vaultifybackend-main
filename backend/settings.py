@@ -37,10 +37,10 @@ ALLOWED_HOSTS = ['*']
 CORS_ALLOW_ALL_ORIGINS = False  # disable wildcard
 CORS_ALLOW_CREDENTIALS = True
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",  # your frontend dev server
-    "https://vaultifyadmin.africa/"
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:5173",  # your frontend dev server
+#     "https://vaultifyadmin.africa/"
+# ]
 # CORS_ALLOWED_ORIGINS = ["*"]
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'rest_framework_simplejwt',
+    # 'storages',  
     'api',
 ]
 
@@ -162,7 +163,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [BASE_DIR / "static"]
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
@@ -180,6 +182,44 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
     ),
 }
+# ---------------------------
+# S3 / Linode Object Storage (Legacy E0)
+# ---------------------------
+# settings.py (additions/changes)
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+# --- Linode Object Storage (S3-compatible) ---
+if os.getenv("USE_S3_MEDIA") == "1":
+    INSTALLED_APPS += ["storages"]
+
+    AWS_ACCESS_KEY_ID        = os.getenv("AWS_ACCESS_KEY_ID")
+    AWS_SECRET_ACCESS_KEY    = os.getenv("AWS_SECRET_ACCESS_KEY")
+    AWS_STORAGE_BUCKET_NAME  = os.getenv("AWS_STORAGE_BUCKET_NAME", "vaultify")
+    AWS_S3_REGION_NAME       = os.getenv("AWS_S3_REGION_NAME", "us-southeast-1")
+    AWS_S3_ENDPOINT_URL      = os.getenv("AWS_S3_ENDPOINT_URL", "https://us-southeast-1.linodeobjects.com")
+
+    # Use VIRTUAL-HOST style with Linode
+    AWS_S3_ADDRESSING_STYLE  = "virtual"
+    AWS_S3_SIGNATURE_VERSION = "s3v4"
+    AWS_S3_FILE_OVERWRITE    = False
+    AWS_QUERYSTRING_AUTH     = False
+
+    # If your bucket has "Bucket owner enforced" (ACLs disabled), keep this None:
+    AWS_DEFAULT_ACL          = None
+
+    # Build custom domain and media URL for virtual-host addressing
+    AWS_S3_CUSTOM_DOMAIN     = f"{AWS_STORAGE_BUCKET_NAME}.{AWS_S3_ENDPOINT_URL.replace('https://','')}"
+    MEDIA_URL                = f"https://{AWS_S3_CUSTOM_DOMAIN}/"
+
+    DEFAULT_FILE_STORAGE     = "storages.backends.s3boto3.S3Boto3Storage"
+
+    STORAGES = {
+        "default": {"BACKEND": "storages.backends.s3boto3.S3Boto3Storage"},
+        "staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"},
+    }
+else:
+    STORAGES = {
+        "staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"},
+    }
+    MEDIA_URL  = "/media/"
+    MEDIA_ROOT = BASE_DIR / "media"
+
