@@ -34,7 +34,7 @@ DEBUG = True
 #     "127.0.0.1",                        # optional - for local testing
 # ]
 ALLOWED_HOSTS = ['*']
-CORS_ALLOW_ALL_ORIGINS = False  # disable wildcard
+CORS_ALLOW_ALL_ORIGINS = True  # disable wildcard
 CORS_ALLOW_CREDENTIALS = True
 
 # CORS_ALLOWED_ORIGINS = [
