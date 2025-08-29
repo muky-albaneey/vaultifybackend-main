@@ -33,57 +33,19 @@ DEBUG = True
 #     "localhost",                        # optional - for local testing
 #     "127.0.0.1",                        # optional - for local testing
 # ]
-# ALLOWED_HOSTS = ['*']
-# CORS_ALLOW_ALL_ORIGINS = False  # disable wildcard
-# CORS_ALLOW_CREDENTIALS = True
+ALLOWED_HOSTS = ['*']
+CORS_ALLOW_ALL_ORIGINS = False  # disable wildcard
+CORS_ALLOW_CREDENTIALS = True
 
-# # CORS_ALLOWED_ORIGINS = [
-# #     "http://localhost:5173",  
-# #     "https://vaultifyadmin.africa/"
-# # ]
-# # CORS_ALLOWED_ORIGINS = ["*"]
-# CSRF_TRUSTED_ORIGINS = [
-#     "http://localhost:5173",
-#     "https://vaultifyadmin.africa/",
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:5173",  
+#     "https://vaultifyadmin.africa/"
 # ]
-# ---------- CORS & CSRF ----------
-# EXACT origins of your frontend(s); no trailing slash
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
-    "https://vaultifyadmin.africa",
-    # add your Render frontend domain if you have one, e.g.:
-    # "https://vaultify-frontend.onrender.com",
-]
-
-# If your frontend sends cookies (fetch with credentials: "include"),
-# set this to True; otherwise leave False for JWT via Authorization header.
-CORS_ALLOW_CREDENTIALS = False  # True only when using cookies/sessions
-
-# If you need the Authorization header (JWT), make sure it's allowed:
-from corsheaders.defaults import default_headers
-CORS_ALLOW_HEADERS = list(default_headers) + ["authorization"]
-
-# Optional: methods are fine by default, but you can be explicit:
-# from corsheaders.defaults import default_methods
-# CORS_ALLOW_METHODS = list(default_methods)
-
-# CSRF is only needed if you use cookie-based auth/SessionAuth.
-# Keep these for admin pages or if you later switch to cookies:
+# CORS_ALLOWED_ORIGINS = ["*"]
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
-    "https://vaultifyadmin.africa",
-    # "https://vaultify-backend.onrender.com",  # your backend custom domain if any
+    "https://vaultifyadmin.africa/",
 ]
-
-# ---------- HOSTS ----------
-# Render will send requests from its domain; list them here.
-ALLOWED_HOSTS = [
-    "localhost",
-    "127.0.0.1",
-    "vaultify-backend.onrender.com",  # replace with your actual backend Render domain
-    "vaultifyadmin.africa",           # if you terminate requests on this domain
-]
-
 
 # Or set the CSRF middleware to do nothing (not recommended)
 

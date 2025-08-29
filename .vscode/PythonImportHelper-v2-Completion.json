@@ -688,14 +688,6 @@
         "documentation": {}
     },
     {
-        "label": "default_headers",
-        "importPath": "corsheaders.defaults",
-        "description": "corsheaders.defaults",
-        "isExtraImport": true,
-        "detail": "corsheaders.defaults",
-        "documentation": {}
-    },
-    {
         "label": "dj_database_url",
         "kind": 6,
         "isExtraImport": true,
@@ -1148,7 +1140,7 @@
         "kind": 5,
         "importPath": "backend.settings",
         "description": "backend.settings",
-        "peekOfCode": "SECRET_KEY = 'django-insecure-q6)(9p#496c_-@lsvj-bni-l#$^u0cfy$fy^o6%6-3l_ie1rd5'\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\n# ALLOWED_HOSTS = [\n#     \"vaultify-43wm.onrender.com\",       # your backend's Render domain\n#     \"vaultifybackend.onrender.com\",         # optional - your custom domain if any\n#     \"localhost\",                        # optional - for local testing\n#     \"127.0.0.1\",                        # optional - for local testing\n# ]\n# ALLOWED_HOSTS = ['*']",
+        "peekOfCode": "SECRET_KEY = 'django-insecure-q6)(9p#496c_-@lsvj-bni-l#$^u0cfy$fy^o6%6-3l_ie1rd5'\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\n# ALLOWED_HOSTS = [\n#     \"vaultify-43wm.onrender.com\",       # your backend's Render domain\n#     \"vaultifybackend.onrender.com\",         # optional - your custom domain if any\n#     \"localhost\",                        # optional - for local testing\n#     \"127.0.0.1\",                        # optional - for local testing\n# ]\nALLOWED_HOSTS = ['*']",
         "detail": "backend.settings",
         "documentation": {}
     },
@@ -1157,43 +1149,7 @@
         "kind": 5,
         "importPath": "backend.settings",
         "description": "backend.settings",
-        "peekOfCode": "DEBUG = True\n# ALLOWED_HOSTS = [\n#     \"vaultify-43wm.onrender.com\",       # your backend's Render domain\n#     \"vaultifybackend.onrender.com\",         # optional - your custom domain if any\n#     \"localhost\",                        # optional - for local testing\n#     \"127.0.0.1\",                        # optional - for local testing\n# ]\n# ALLOWED_HOSTS = ['*']\n# CORS_ALLOW_ALL_ORIGINS = False  # disable wildcard\n# CORS_ALLOW_CREDENTIALS = True",
-        "detail": "backend.settings",
-        "documentation": {}
-    },
-    {
-        "label": "CORS_ALLOWED_ORIGINS",
-        "kind": 5,
-        "importPath": "backend.settings",
-        "description": "backend.settings",
-        "peekOfCode": "CORS_ALLOWED_ORIGINS = [\n    \"http://localhost:5173\",\n    \"https://vaultifyadmin.africa\",\n    # add your Render frontend domain if you have one, e.g.:\n    # \"https://vaultify-frontend.onrender.com\",\n]\n# If your frontend sends cookies (fetch with credentials: \"include\"),\n# set this to True; otherwise leave False for JWT via Authorization header.\nCORS_ALLOW_CREDENTIALS = False  # True only when using cookies/sessions\n# If you need the Authorization header (JWT), make sure it's allowed:",
-        "detail": "backend.settings",
-        "documentation": {}
-    },
-    {
-        "label": "CORS_ALLOW_CREDENTIALS",
-        "kind": 5,
-        "importPath": "backend.settings",
-        "description": "backend.settings",
-        "peekOfCode": "CORS_ALLOW_CREDENTIALS = False  # True only when using cookies/sessions\n# If you need the Authorization header (JWT), make sure it's allowed:\nfrom corsheaders.defaults import default_headers\nCORS_ALLOW_HEADERS = list(default_headers) + [\"authorization\"]\n# Optional: methods are fine by default, but you can be explicit:\n# from corsheaders.defaults import default_methods\n# CORS_ALLOW_METHODS = list(default_methods)\n# CSRF is only needed if you use cookie-based auth/SessionAuth.\n# Keep these for admin pages or if you later switch to cookies:\nCSRF_TRUSTED_ORIGINS = [",
-        "detail": "backend.settings",
-        "documentation": {}
-    },
-    {
-        "label": "CORS_ALLOW_HEADERS",
-        "kind": 5,
-        "importPath": "backend.settings",
-        "description": "backend.settings",
-        "peekOfCode": "CORS_ALLOW_HEADERS = list(default_headers) + [\"authorization\"]\n# Optional: methods are fine by default, but you can be explicit:\n# from corsheaders.defaults import default_methods\n# CORS_ALLOW_METHODS = list(default_methods)\n# CSRF is only needed if you use cookie-based auth/SessionAuth.\n# Keep these for admin pages or if you later switch to cookies:\nCSRF_TRUSTED_ORIGINS = [\n    \"http://localhost:5173\",\n    \"https://vaultifyadmin.africa\",\n    # \"https://vaultify-backend.onrender.com\",  # your backend custom domain if any",
-        "detail": "backend.settings",
-        "documentation": {}
-    },
-    {
-        "label": "CSRF_TRUSTED_ORIGINS",
-        "kind": 5,
-        "importPath": "backend.settings",
-        "description": "backend.settings",
-        "peekOfCode": "CSRF_TRUSTED_ORIGINS = [\n    \"http://localhost:5173\",\n    \"https://vaultifyadmin.africa\",\n    # \"https://vaultify-backend.onrender.com\",  # your backend custom domain if any\n]\n# ---------- HOSTS ----------\n# Render will send requests from its domain; list them here.\nALLOWED_HOSTS = [\n    \"localhost\",\n    \"127.0.0.1\",",
+        "peekOfCode": "DEBUG = True\n# ALLOWED_HOSTS = [\n#     \"vaultify-43wm.onrender.com\",       # your backend's Render domain\n#     \"vaultifybackend.onrender.com\",         # optional - your custom domain if any\n#     \"localhost\",                        # optional - for local testing\n#     \"127.0.0.1\",                        # optional - for local testing\n# ]\nALLOWED_HOSTS = ['*']\nCORS_ALLOW_ALL_ORIGINS = False  # disable wildcard\nCORS_ALLOW_CREDENTIALS = True",
         "detail": "backend.settings",
         "documentation": {}
     },
@@ -1202,7 +1158,34 @@
         "kind": 5,
         "importPath": "backend.settings",
         "description": "backend.settings",
-        "peekOfCode": "ALLOWED_HOSTS = [\n    \"localhost\",\n    \"127.0.0.1\",\n    \"vaultify-backend.onrender.com\",  # replace with your actual backend Render domain\n    \"vaultifyadmin.africa\",           # if you terminate requests on this domain\n]\n# Or set the CSRF middleware to do nothing (not recommended)\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',",
+        "peekOfCode": "ALLOWED_HOSTS = ['*']\nCORS_ALLOW_ALL_ORIGINS = False  # disable wildcard\nCORS_ALLOW_CREDENTIALS = True\n# CORS_ALLOWED_ORIGINS = [\n#     \"http://localhost:5173\",  \n#     \"https://vaultifyadmin.africa/\"\n# ]\n# CORS_ALLOWED_ORIGINS = [\"*\"]\nCSRF_TRUSTED_ORIGINS = [\n    \"http://localhost:5173\",",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "CORS_ALLOW_ALL_ORIGINS",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "CORS_ALLOW_ALL_ORIGINS = False  # disable wildcard\nCORS_ALLOW_CREDENTIALS = True\n# CORS_ALLOWED_ORIGINS = [\n#     \"http://localhost:5173\",  \n#     \"https://vaultifyadmin.africa/\"\n# ]\n# CORS_ALLOWED_ORIGINS = [\"*\"]\nCSRF_TRUSTED_ORIGINS = [\n    \"http://localhost:5173\",\n    \"https://vaultifyadmin.africa/\",",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "CORS_ALLOW_CREDENTIALS",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "CORS_ALLOW_CREDENTIALS = True\n# CORS_ALLOWED_ORIGINS = [\n#     \"http://localhost:5173\",  \n#     \"https://vaultifyadmin.africa/\"\n# ]\n# CORS_ALLOWED_ORIGINS = [\"*\"]\nCSRF_TRUSTED_ORIGINS = [\n    \"http://localhost:5173\",\n    \"https://vaultifyadmin.africa/\",\n]",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "CSRF_TRUSTED_ORIGINS",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "CSRF_TRUSTED_ORIGINS = [\n    \"http://localhost:5173\",\n    \"https://vaultifyadmin.africa/\",\n]\n# Or set the CSRF middleware to do nothing (not recommended)\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',",
         "detail": "backend.settings",
         "documentation": {}
     },
