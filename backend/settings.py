@@ -188,6 +188,40 @@ REST_FRAMEWORK = {
 # settings.py (additions/changes)
 
 # --- Linode Object Storage (S3-compatible) ---
+# if os.getenv("USE_S3_MEDIA") == "1":
+#     INSTALLED_APPS += ["storages"]
+
+#     AWS_ACCESS_KEY_ID        = os.getenv("AWS_ACCESS_KEY_ID")
+#     AWS_SECRET_ACCESS_KEY    = os.getenv("AWS_SECRET_ACCESS_KEY")
+#     AWS_STORAGE_BUCKET_NAME  = os.getenv("AWS_STORAGE_BUCKET_NAME", "vaultify")
+#     AWS_S3_REGION_NAME       = os.getenv("AWS_S3_REGION_NAME", "us-southeast-1")
+#     AWS_S3_ENDPOINT_URL      = os.getenv("AWS_S3_ENDPOINT_URL", "https://us-southeast-1.linodeobjects.com")
+
+#     # Use VIRTUAL-HOST style with Linode
+#     AWS_S3_ADDRESSING_STYLE  = "virtual"
+#     AWS_S3_SIGNATURE_VERSION = "s3v4"
+#     AWS_S3_FILE_OVERWRITE    = False
+#     AWS_QUERYSTRING_AUTH     = True 
+
+#     # If your bucket has "Bucket owner enforced" (ACLs disabled), keep this None:
+#     AWS_DEFAULT_ACL          = None
+
+#     # Build custom domain and media URL for virtual-host addressing
+#     AWS_S3_CUSTOM_DOMAIN     = f"{AWS_STORAGE_BUCKET_NAME}.{AWS_S3_ENDPOINT_URL.replace('https://','')}"
+#     MEDIA_URL                = f"https://{AWS_S3_CUSTOM_DOMAIN}/"
+
+#     DEFAULT_FILE_STORAGE     = "storages.backends.s3boto3.S3Boto3Storage"
+
+#     STORAGES = {
+#         "default": {"BACKEND": "storages.backends.s3boto3.S3Boto3Storage"},
+#         "staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"},
+#     }
+# else:
+#     STORAGES = {
+#         "staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"},
+#     }
+    
+# ---- S3 / Linode (private + signed URLs) ----
 if os.getenv("USE_S3_MEDIA") == "1":
     INSTALLED_APPS += ["storages"]
 
@@ -197,18 +231,16 @@ if os.getenv("USE_S3_MEDIA") == "1":
     AWS_S3_REGION_NAME       = os.getenv("AWS_S3_REGION_NAME", "us-southeast-1")
     AWS_S3_ENDPOINT_URL      = os.getenv("AWS_S3_ENDPOINT_URL", "https://us-southeast-1.linodeobjects.com")
 
-    # Use VIRTUAL-HOST style with Linode
     AWS_S3_ADDRESSING_STYLE  = "virtual"
     AWS_S3_SIGNATURE_VERSION = "s3v4"
-    AWS_S3_FILE_OVERWRITE    = False
-    AWS_QUERYSTRING_AUTH     = False
 
-    # If your bucket has "Bucket owner enforced" (ACLs disabled), keep this None:
+    # PRIVATE objects + presigned URLs
     AWS_DEFAULT_ACL          = None
+    AWS_QUERYSTRING_AUTH     = True            # <- signed URLs
+    AWS_S3_CUSTOM_DOMAIN     = None            # <- IMPORTANT: let storages build signed URL
+    MEDIA_URL                = None            # storages will supply .url()
 
-    # Build custom domain and media URL for virtual-host addressing
-    AWS_S3_CUSTOM_DOMAIN     = f"{AWS_STORAGE_BUCKET_NAME}.{AWS_S3_ENDPOINT_URL.replace('https://','')}"
-    MEDIA_URL                = f"https://{AWS_S3_CUSTOM_DOMAIN}/"
+    AWS_S3_FILE_OVERWRITE    = False
 
     DEFAULT_FILE_STORAGE     = "storages.backends.s3boto3.S3Boto3Storage"
 
@@ -216,10 +248,7 @@ if os.getenv("USE_S3_MEDIA") == "1":
         "default": {"BACKEND": "storages.backends.s3boto3.S3Boto3Storage"},
         "staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"},
     }
-else:
-    STORAGES = {
-        "staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"},
-    }
+    
     MEDIA_URL  = "/media/"
     MEDIA_ROOT = BASE_DIR / "media"
 

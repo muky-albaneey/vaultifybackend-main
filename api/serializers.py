@@ -2,6 +2,7 @@ from rest_framework import serializers
 from django.db.models import Avg
 from .models import Admin, Service, Provider, ProviderPhoto, ProviderReview, Alert, AlertAttachment
 
+
 class AdminSerializer(serializers.ModelSerializer):
     class Meta:
         model = Admin
@@ -56,9 +57,13 @@ class ProviderSerializer(serializers.ModelSerializer):
 
     # media & reviews
     photos = ProviderPhotoSerializer(many=True, read_only=True)
-    photos_upload = serializers.ListField(  # for POST/PUT (multipart)
+
+    # canonical upload field (what your code originally used)
+    photos_upload = serializers.ListField(
         child=serializers.ImageField(), write_only=True, required=False
     )
+
+    # reviews (read-only)
     reviews = ProviderReviewSerializer(many=True, read_only=True)
 
     # computed
@@ -81,13 +86,34 @@ class ProviderSerializer(serializers.ModelSerializer):
             'average_rating', 'reviews_count',
             'created_at', 'updated_at',
         ]
-        read_only_fields = ['id', 'created_at', 'updated_at', 'full_name',
-                            'average_rating', 'reviews_count', 'photos', 'reviews']
+        read_only_fields = [
+            'id', 'created_at', 'updated_at', 'full_name',
+            'average_rating', 'reviews_count', 'photos', 'reviews'
+        ]
+
+    def validate(self, attrs):
+        """
+        Accept files under EITHER 'photos_upload' (canonical) OR 'photos' (alias from clients like Postman).
+        """
+        request = self.context.get('request')
+        if request and hasattr(request, 'FILES'):
+            # Try canonical first, then alias
+            files_canonical = request.FILES.getlist('photos_upload')
+            files_alias     = request.FILES.getlist('photos')
+            merged = []
+            if files_canonical:
+                merged.extend(files_canonical)
+            if files_alias:
+                merged.extend(files_alias)
+            # If the serializer didn't already parse photos_upload, inject them
+            if merged and 'photos_upload' not in attrs:
+                attrs['photos_upload'] = merged
+        return super().validate(attrs)
 
     def _replace_photos(self, provider: Provider, files):
         # Hard cap of 5 photos (as per UI)
         ProviderPhoto.objects.filter(provider=provider).delete()
-        for i, f in enumerate(files[:5]):
+        for f in files[:5]:
             ProviderPhoto.objects.create(provider=provider, image=f)
 
     def create(self, validated_data):
@@ -126,14 +152,19 @@ class AlertAttachmentSerializer(serializers.ModelSerializer):
         fields = ['id', 'announcement_image']
         extra_kwargs = {'id': {'read_only': True}}
 
+
 class AlertSerializer(serializers.ModelSerializer):
     announcement_image = serializers.ListField(child=serializers.FileField(), write_only=True, required=False)
     attachments = AlertAttachmentSerializer(many=True, read_only=True, source='announcement_image')
+
     class Meta:
         model = Alert
-        fields = ['id', 'title', 'category', 'message', 'public_date', 'estate', 'role',
-                  'announcement_image', 'attachments', 'created_at']
+        fields = [
+            'id', 'title', 'category', 'message', 'public_date', 'estate', 'role',
+            'announcement_image', 'attachments', 'created_at'
+        ]
         extra_kwargs = {'id': {'read_only': True}, 'created_at': {'read_only': True}}
+
     def create(self, validated_data):
         files = validated_data.pop('announcement_image', [])
         alert = Alert.objects.create(**validated_data)

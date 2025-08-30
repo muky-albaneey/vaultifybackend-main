@@ -932,7 +932,7 @@
         "kind": 6,
         "importPath": "api.serializers",
         "description": "api.serializers",
-        "peekOfCode": "class AlertSerializer(serializers.ModelSerializer):\n    announcement_image = serializers.ListField(child=serializers.FileField(), write_only=True, required=False)\n    attachments = AlertAttachmentSerializer(many=True, read_only=True, source='announcement_image')\n    class Meta:\n        model = Alert\n        fields = ['id', 'title', 'category', 'message', 'public_date', 'estate', 'role',\n                  'announcement_image', 'attachments', 'created_at']\n        extra_kwargs = {'id': {'read_only': True}, 'created_at': {'read_only': True}}\n    def create(self, validated_data):\n        files = validated_data.pop('announcement_image', [])",
+        "peekOfCode": "class AlertSerializer(serializers.ModelSerializer):\n    announcement_image = serializers.ListField(child=serializers.FileField(), write_only=True, required=False)\n    attachments = AlertAttachmentSerializer(many=True, read_only=True, source='announcement_image')\n    class Meta:\n        model = Alert\n        fields = [\n            'id', 'title', 'category', 'message', 'public_date', 'estate', 'role',\n            'announcement_image', 'attachments', 'created_at'\n        ]\n        extra_kwargs = {'id': {'read_only': True}, 'created_at': {'read_only': True}}",
         "detail": "api.serializers",
         "documentation": {}
     },
