@@ -150,6 +150,14 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -767,6 +775,24 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "api.migrations.0003_create_alertattachment_if_missing",
+        "description": "api.migrations.0003_create_alertattachment_if_missing",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        (\"api\", \"0002_create_missing_provider_tables\"),\n    ]\n    operations = [\n        migrations.RunSQL(SQL, reverse_sql=\"\"\"\n            DROP TABLE IF EXISTS api_alertattachment CASCADE;\n        \"\"\"),\n    ]",
+        "detail": "api.migrations.0003_create_alertattachment_if_missing",
+        "documentation": {}
+    },
+    {
+        "label": "SQL",
+        "kind": 5,
+        "importPath": "api.migrations.0003_create_alertattachment_if_missing",
+        "description": "api.migrations.0003_create_alertattachment_if_missing",
+        "peekOfCode": "SQL = r\"\"\"\nCREATE TABLE IF NOT EXISTS api_alertattachment (\n    id BIGSERIAL PRIMARY KEY,\n    announcement_image varchar(100),\n    alert_id bigint NOT NULL\n        REFERENCES api_alert(id) ON DELETE CASCADE\n        DEFERRABLE INITIALLY DEFERRED\n);\nCREATE INDEX IF NOT EXISTS api_alertattachment_alert_id_idx\n    ON api_alertattachment(alert_id);",
+        "detail": "api.migrations.0003_create_alertattachment_if_missing",
+        "documentation": {}
+    },
+    {
         "label": "ApiConfig",
         "kind": 6,
         "importPath": "api.apps",
@@ -780,7 +806,7 @@
         "kind": 6,
         "importPath": "api.models",
         "description": "api.models",
-        "peekOfCode": "class Admin(models.Model):\n    adminName = models.CharField(max_length=100)\n    adminEmail = models.EmailField(unique=True)\n    adminRole = models.CharField(max_length=50)\n    adminPassword = models.CharField(max_length=128)\n    def __str__(self): return self.adminName\nclass Service(models.Model):\n    name = models.CharField(max_length=100, unique=True)\n    def __str__(self): return self.name\nclass Availability(models.TextChoices):",
+        "peekOfCode": "class Admin(models.Model):\n    adminName = models.CharField(max_length=100)\n    adminEmail = models.EmailField(unique=True)\n    adminRole = models.CharField(max_length=50)\n    adminPassword = models.CharField(max_length=128)\n    def __str__(self): return self.adminName\nclass Service(models.Model):\n    name = models.CharField(max_length=100, unique=True)\n    def __str__(self): return self.name\n# class Availability(models.TextChoices):",
         "detail": "api.models",
         "documentation": {}
     },
@@ -789,16 +815,7 @@
         "kind": 6,
         "importPath": "api.models",
         "description": "api.models",
-        "peekOfCode": "class Service(models.Model):\n    name = models.CharField(max_length=100, unique=True)\n    def __str__(self): return self.name\nclass Availability(models.TextChoices):\n    ONLINE = \"online\", \"Online\"\n    OFFLINE = \"offline\", \"Offline\"\n    BUSY = \"busy\", \"Busy\"\nclass Provider(models.Model):\n    # Name\n    first_name     = models.CharField(max_length=100)",
-        "detail": "api.models",
-        "documentation": {}
-    },
-    {
-        "label": "Availability",
-        "kind": 6,
-        "importPath": "api.models",
-        "description": "api.models",
-        "peekOfCode": "class Availability(models.TextChoices):\n    ONLINE = \"online\", \"Online\"\n    OFFLINE = \"offline\", \"Offline\"\n    BUSY = \"busy\", \"Busy\"\nclass Provider(models.Model):\n    # Name\n    first_name     = models.CharField(max_length=100)\n    last_name      = models.CharField(max_length=100)\n    # Contact & profile\n    phone          = models.CharField(max_length=20)",
+        "peekOfCode": "class Service(models.Model):\n    name = models.CharField(max_length=100, unique=True)\n    def __str__(self): return self.name\n# class Availability(models.TextChoices):\n#     ONLINE = \"online\", \"Online\"\n#     OFFLINE = \"offline\", \"Offline\"\n#     BUSY = \"busy\", \"Busy\"\nclass Provider(models.Model):\n    # Name\n    first_name     = models.CharField(max_length=100)",
         "detail": "api.models",
         "documentation": {}
     },
@@ -825,7 +842,7 @@
         "kind": 6,
         "importPath": "api.models",
         "description": "api.models",
-        "peekOfCode": "class ProviderReview(models.Model):\n    provider      = models.ForeignKey(Provider, related_name=\"reviews\", on_delete=models.CASCADE)\n    reviewer_name = models.CharField(max_length=120)\n    rating        = models.FloatField(validators=[MinValueValidator(0.0), MaxValueValidator(5.0)])\n    comment       = models.TextField(blank=True)\n    created_at    = models.DateTimeField(auto_now_add=True)\n    def __str__(self):\n        return f\"{self.provider.full_name} - {self.rating}/5 by {self.reviewer_name}\"\nfrom django.db import models\nclass Alert(models.Model):",
+        "peekOfCode": "class ProviderReview(models.Model):\n    provider      = models.ForeignKey(Provider, related_name=\"reviews\", on_delete=models.CASCADE)\n    reviewer_name = models.CharField(max_length=120)\n    rating        = models.FloatField(validators=[MinValueValidator(0.0), MaxValueValidator(5.0)])\n    comment       = models.TextField(blank=True)\n    created_at    = models.DateTimeField(auto_now_add=True)\n    def __str__(self):\n        return f\"{self.provider.full_name} - {self.rating}/5 by {self.reviewer_name}\"\n# from django.db import models\nfrom django.db import models",
         "detail": "api.models",
         "documentation": {}
     },
