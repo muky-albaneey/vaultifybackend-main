@@ -663,6 +663,14 @@
         "documentation": {}
     },
     {
+        "label": "defaultdict",
+        "importPath": "collections",
+        "description": "collections",
+        "isExtraImport": true,
+        "detail": "collections",
+        "documentation": {}
+    },
+    {
         "label": "os",
         "kind": 6,
         "isExtraImport": true,
@@ -1031,7 +1039,7 @@
         "kind": 6,
         "importPath": "api.views",
         "description": "api.views",
-        "peekOfCode": "class ServiceProvidersByEstateView(APIView):\n    def get(self, request):\n        services = Service.objects.all()\n        response_data = []\n        for service in services:\n            estate_dict = {}\n            for p in Provider.objects.filter(service=service).select_related('admin'):\n                estate = getattr(p.admin, 'adminRole', 'Unknown') or \"Unknown\"\n                estate_dict.setdefault(estate, []).append({\n                    \"id\": p.id,",
+        "peekOfCode": "class ServiceProvidersByEstateView(APIView):\n    \"\"\"\n    GET /api/services-by-estate\n    Optional query params:\n      - estate=<adminRole>            e.g. Paradise admin, Range-view admin\n      - service_name=<string>         e.g. Electrician\n      - service_id=<int>              e.g. 3\n    \"\"\"\n    def get(self, request):\n        estate_q = (request.query_params.get('estate') or '').strip()",
         "detail": "api.views",
         "documentation": {}
     },

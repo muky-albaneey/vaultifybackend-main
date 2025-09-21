@@ -219,145 +219,21 @@ class ProviderReviewListCreateView(ListCreateAPIView):
 
 
 # Group providers by estate (adminRole) with new fields
-class ServiceProvidersByEstateView(APIView):
-    def get(self, request):
-        services = Service.objects.all()
-        response_data = []
-        for service in services:
-            estate_dict = {}
-            for p in Provider.objects.filter(service=service).select_related('admin'):
-                estate = getattr(p.admin, 'adminRole', 'Unknown') or "Unknown"
-                estate_dict.setdefault(estate, []).append({
-                    "id": p.id,
-                    "full_name": f"{p.first_name} {p.last_name}",
-                    "phone": p.phone,
-                    "location": p.location,
-                    "availability": p.availability,
-                    "service": p.service.name,
-                })
-            response_data.append({
-                "service_id": service.id,
-                "service_name": service.name,
-                "estates": estate_dict
-            })
-        return Response(response_data)
-
-# from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
-
-# class ServiceListCreateView(ListCreateAPIView):
-#     queryset = Service.objects.all()
-#     serializer_class = ServiceSerializer
-
-# class ServiceRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):
-#     queryset = Service.objects.all()
-#     serializer_class = ServiceSerializer
-
-# class ServiceListView(ListAPIView):
-#     queryset = Service.objects.all()
-#     serializer_class = ServiceSerializer
-
-# from rest_framework.views import APIView
-
-# # views.py
-# from django.db.models import Prefetch
-
-# class ServiceWithProvidersView(APIView):
-#     def get(self, request):
-#         services = (
-#             Service.objects
-#             .prefetch_related(
-#                 Prefetch(
-#                     'providers',  # <-- matches related_name on Provider.service
-#                     queryset=Provider.objects.select_related('service', 'admin').order_by('provider_name')
-#                 )
-#             )
-#         )
-#         serializer = ServiceWithProvidersSerializer(services, many=True)
-#         return Response(serializer.data)
-
-# from rest_framework.generics import RetrieveUpdateDestroyAPIView
-# from rest_framework.decorators import api_view
-# from django.shortcuts import get_object_or_404
-
-# from rest_framework.generics import ListCreateAPIView
-# from rest_framework.response import Response
-# from rest_framework import status
-
-# class ProviderListCreateView(ListCreateAPIView):
-#     serializer_class = ProviderSerializer
-#     queryset = Provider.objects.select_related('service', 'admin').all()  # small perf win
-
-#     def get_queryset(self):
-#         service_name = self.request.query_params.get('service_name')
-#         admin_id = self.request.query_params.get('admin_id')
-#         qs = self.queryset
-#         if service_name:
-#             qs = qs.filter(service__name__iexact=service_name.strip())  # case-insensitive
-#         if admin_id:
-#             qs = qs.filter(admin__id=admin_id)
-#         return qs
-
-#     def create(self, request, *args, **kwargs):
-#         data = request.data.copy()
-#         service_name_raw = (data.get('service_name') or '').strip()
-#         admin_id = data.get('admin_id')
-
-#         if not service_name_raw:
-#             return Response({"error": "service_name is required"}, status=status.HTTP_400_BAD_REQUEST)
-#         if not admin_id:
-#             return Response({"error": "admin_id is required"}, status=status.HTTP_400_BAD_REQUEST)
-
-#         # normalize & resolve service (case-insensitive)
-#         normalized = ' '.join(service_name_raw.split())
-#         service = Service.objects.filter(name__iexact=normalized).first()
-#         if not service:
-#             # auto-create if not found
-#             service = Service.objects.create(name=normalized)
-
-#         # resolve admin
-#         admin = Admin.objects.filter(id=admin_id).first()
-#         if not admin:
-#             return Response({"error": "Admin not found"}, status=status.HTTP_400_BAD_REQUEST)
-
-#         # match ProviderSerializer write fields
-#         data['service_id'] = service.id   # source='service'
-#         data['admin'] = admin.id          # FK id
-#         data.pop('service_name', None)    # client-only key
-
-#         serializer = self.get_serializer(data=data)
-#         serializer.is_valid(raise_exception=True)
-#         self.perform_create(serializer)
-#         return Response(serializer.data, status=status.HTTP_201_CREATED)
-
-# class ProviderRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):
-#     queryset = Provider.objects.all()
-#     serializer_class = ProviderSerializer
-
-# from rest_framework.views import APIView
-# from rest_framework.response import Response
-
 # class ServiceProvidersByEstateView(APIView):
 #     def get(self, request):
 #         services = Service.objects.all()
 #         response_data = []
 #         for service in services:
-#             providers = Provider.objects.filter(service=service)
 #             estate_dict = {}
-#             for provider in providers:
-#                 try:
-#                     estate = provider.admin.adminRole
-#                 except Exception:
-#                     estate = "Unknown"
-#                 if estate not in estate_dict:
-#                     estate_dict[estate] = []
-#                 estate_dict[estate].append({
-#                     "id": provider.id,
-#                     "provider_name": provider.provider_name,
-#                     "email": provider.email,
-#                     "phone": provider.phone,
-#                     "location": provider.location,
-#                     "availability": provider.availability,
-#                     "service": provider.service.name,
+#             for p in Provider.objects.filter(service=service).select_related('admin'):
+#                 estate = getattr(p.admin, 'adminRole', 'Unknown') or "Unknown"
+#                 estate_dict.setdefault(estate, []).append({
+#                     "id": p.id,
+#                     "full_name": f"{p.first_name} {p.last_name}",
+#                     "phone": p.phone,
+#                     "location": p.location,
+#                     "availability": p.availability,
+#                     "service": p.service.name,
 #                 })
 #             response_data.append({
 #                 "service_id": service.id,
@@ -365,6 +241,83 @@ class ServiceProvidersByEstateView(APIView):
 #                 "estates": estate_dict
 #             })
 #         return Response(response_data)
+
+from collections import defaultdict
+
+class ServiceProvidersByEstateView(APIView):
+    """
+    GET /api/services-by-estate
+    Optional query params:
+      - estate=<adminRole>            e.g. Paradise admin, Range-view admin
+      - service_name=<string>         e.g. Electrician
+      - service_id=<int>              e.g. 3
+    """
+    def get(self, request):
+        estate_q = (request.query_params.get('estate') or '').strip()
+        service_name_q = (request.query_params.get('service_name') or '').strip()
+        service_id_q = request.query_params.get('service_id')
+
+        # Base queryset with needed joins
+        providers_qs = (
+            Provider.objects
+            .select_related('service', 'admin')
+            .only(
+                'id', 'first_name', 'last_name', 'phone', 'location', 'availability',
+                'service__id', 'service__name', 'admin__adminRole'
+            )
+        )
+
+        if estate_q:
+            providers_qs = providers_qs.filter(admin__adminRole__iexact=estate_q)
+
+        if service_name_q:
+            providers_qs = providers_qs.filter(service__name__iexact=service_name_q)
+
+        if service_id_q:
+            providers_qs = providers_qs.filter(service__id=service_id_q)
+
+        # Group by service, then by estate
+        services_map: dict[int, dict] = {}
+        estates_map_per_service: dict[int, dict[str, list]] = defaultdict(dict)
+
+        for p in providers_qs:
+            s_id = p.service.id
+            if s_id not in services_map:
+                services_map[s_id] = {
+                    "service_id": s_id,
+                    "service_name": p.service.name,
+                    "estates": {}
+                }
+                estates_map_per_service[s_id] = defaultdict(list)
+
+            estate_key = (getattr(p.admin, 'adminRole', None) or "Unknown") or "Unknown"
+            estates_map_per_service[s_id][estate_key].append({
+                "id": p.id,
+                "full_name": f"{p.first_name} {p.last_name}",
+                "phone": p.phone,
+                "location": p.location,
+                "availability": p.availability,
+                "service": p.service.name,
+            })
+
+        # Build response array, optionally keeping only the requested estate
+        response_data = []
+        for s_id, base in services_map.items():
+            estates_dict = estates_map_per_service[s_id]
+            if estate_q:
+                # When an estate filter is provided, return only that estate (if present)
+                filtered = {}
+                if estates_dict.get(estate_q):
+                    filtered[estate_q] = estates_dict[estate_q]
+                # If no providers for that estate, keep empty dict to signal no matches for that service
+                base["estates"] = filtered
+            else:
+                base["estates"] = dict(estates_dict)
+            # Only include services that have at least one provider after filtering
+            if any(base["estates"].values()):
+                response_data.append(base)
+
+        return Response(response_data)
 
 @api_view(['DELETE'])
 def delete_admin(request, id):
