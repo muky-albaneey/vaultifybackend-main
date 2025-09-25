@@ -431,6 +431,14 @@
         "documentation": {}
     },
     {
+        "label": "Response",
+        "importPath": "rest_framework.response",
+        "description": "rest_framework.response",
+        "isExtraImport": true,
+        "detail": "rest_framework.response",
+        "documentation": {}
+    },
+    {
         "label": "make_password",
         "importPath": "django.contrib.auth.hashers",
         "description": "django.contrib.auth.hashers",
@@ -444,6 +452,14 @@
         "description": "django.contrib.auth.hashers",
         "isExtraImport": true,
         "detail": "django.contrib.auth.hashers",
+        "documentation": {}
+    },
+    {
+        "label": "APIView",
+        "importPath": "rest_framework.views",
+        "description": "rest_framework.views",
+        "isExtraImport": true,
+        "detail": "rest_framework.views",
         "documentation": {}
     },
     {

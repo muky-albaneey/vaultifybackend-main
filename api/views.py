@@ -242,7 +242,11 @@ class ProviderReviewListCreateView(ListCreateAPIView):
 #             })
 #         return Response(response_data)
 
+# from collections import defaultdict
 from collections import defaultdict
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from .models import Provider, Service
 
 class ServiceProvidersByEstateView(APIView):
     """
@@ -257,26 +261,24 @@ class ServiceProvidersByEstateView(APIView):
         service_name_q = (request.query_params.get('service_name') or '').strip()
         service_id_q = request.query_params.get('service_id')
 
-        # Base queryset with needed joins
+        # Include bio and profile_picture so we can read them without extra DB hits
         providers_qs = (
             Provider.objects
             .select_related('service', 'admin')
             .only(
                 'id', 'first_name', 'last_name', 'phone', 'location', 'availability',
+                'bio', 'profile_picture',
                 'service__id', 'service__name', 'admin__adminRole'
             )
         )
 
         if estate_q:
             providers_qs = providers_qs.filter(admin__adminRole__iexact=estate_q)
-
         if service_name_q:
             providers_qs = providers_qs.filter(service__name__iexact=service_name_q)
-
         if service_id_q:
             providers_qs = providers_qs.filter(service__id=service_id_q)
 
-        # Group by service, then by estate
         services_map: dict[int, dict] = {}
         estates_map_per_service: dict[int, dict[str, list]] = defaultdict(dict)
 
@@ -291,6 +293,16 @@ class ServiceProvidersByEstateView(APIView):
                 estates_map_per_service[s_id] = defaultdict(list)
 
             estate_key = (getattr(p.admin, 'adminRole', None) or "Unknown") or "Unknown"
+
+            # Build absolute URL for profile picture (None if not set)
+            picture_url = None
+            if getattr(p, 'profile_picture', None):
+                try:
+                    # If storage returns a relative path, make it absolute
+                    picture_url = request.build_absolute_uri(p.profile_picture.url)
+                except Exception:
+                    picture_url = None
+
             estates_map_per_service[s_id][estate_key].append({
                 "id": p.id,
                 "full_name": f"{p.first_name} {p.last_name}",
@@ -298,7 +310,82 @@ class ServiceProvidersByEstateView(APIView):
                 "location": p.location,
                 "availability": p.availability,
                 "service": p.service.name,
+                "bio": p.bio,                              # ← included
+                "profile_picture": picture_url,            # ← included
             })
+
+        response_data = []
+        for s_id, base in services_map.items():
+            estates_dict = estates_map_per_service[s_id]
+            if estate_q:
+                filtered = {}
+                if estates_dict.get(estate_q):
+                    filtered[estate_q] = estates_dict[estate_q]
+                base["estates"] = filtered
+            else:
+                base["estates"] = dict(estates_dict)
+
+            if any(base["estates"].values()):
+                response_data.append(base)
+
+        return Response(response_data)
+
+# class ServiceProvidersByEstateView(APIView):
+#     """
+#     GET /api/services-by-estate
+#     Optional query params:
+#       - estate=<adminRole>            e.g. Paradise admin, Range-view admin
+#       - service_name=<string>         e.g. Electrician
+#       - service_id=<int>              e.g. 3
+#     """
+#     def get(self, request):
+#         estate_q = (request.query_params.get('estate') or '').strip()
+#         service_name_q = (request.query_params.get('service_name') or '').strip()
+#         service_id_q = request.query_params.get('service_id')
+
+#         # Base queryset with needed joins
+#         providers_qs = (
+#             Provider.objects
+#             .select_related('service', 'admin')
+#             .only(
+#                 'id', 'first_name', 'last_name', 'phone', 'location', 'availability',
+#                 'service__id', 'service__name', 'admin__adminRole'
+#             )
+#         )
+
+#         if estate_q:
+#             providers_qs = providers_qs.filter(admin__adminRole__iexact=estate_q)
+
+#         if service_name_q:
+#             providers_qs = providers_qs.filter(service__name__iexact=service_name_q)
+
+#         if service_id_q:
+#             providers_qs = providers_qs.filter(service__id=service_id_q)
+
+#         # Group by service, then by estate
+#         services_map: dict[int, dict] = {}
+#         estates_map_per_service: dict[int, dict[str, list]] = defaultdict(dict)
+
+#         for p in providers_qs:
+#             s_id = p.service.id
+#             if s_id not in services_map:
+#                 services_map[s_id] = {
+#                     "service_id": s_id,
+#                     "service_name": p.service.name,
+#                     "estates": {}
+#                 }
+#                 estates_map_per_service[s_id] = defaultdict(list)
+
+#             estate_key = (getattr(p.admin, 'adminRole', None) or "Unknown") or "Unknown"
+#             estates_map_per_service[s_id][estate_key].append({
+#                 "id": p.id,
+#                 "full_name": f"{p.first_name} {p.last_name}",
+#                 "phone": p.phone,
+#                 "location": p.location,
+#                 "availability": p.availability,
+#                 "service": p.service.name,
+                
+#             })
 
         # Build response array, optionally keeping only the requested estate
         response_data = []
