@@ -266,7 +266,7 @@ class ServiceProvidersByEstateView(APIView):
             Provider.objects
             .select_related('service', 'admin')
             .only(
-                'id', 'first_name', 'last_name', 'phone', 'location', 'availability',
+                'id', 'first_name', 'last_name', 'phone', 'location', 'availability','skill',
                 'bio', 'profile_picture',
                 'service__id', 'service__name', 'admin__adminRole'
             )
@@ -312,6 +312,7 @@ class ServiceProvidersByEstateView(APIView):
                 "service": p.service.name,
                 "bio": p.bio,                              # ← included
                 "profile_picture": picture_url,            # ← included
+                "skill":p.skill
             })
 
         response_data = []
