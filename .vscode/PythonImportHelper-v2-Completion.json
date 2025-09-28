@@ -238,6 +238,14 @@
         "documentation": {}
     },
     {
+        "label": "Prefetch",
+        "importPath": "django.db.models",
+        "description": "django.db.models",
+        "isExtraImport": true,
+        "detail": "django.db.models",
+        "documentation": {}
+    },
+    {
         "label": "mimetypes",
         "kind": 6,
         "isExtraImport": true,
@@ -1046,7 +1054,7 @@
         "kind": 6,
         "importPath": "api.views",
         "description": "api.views",
-        "peekOfCode": "class ProviderReviewListCreateView(ListCreateAPIView):\n    serializer_class = ProviderReviewSerializer\n    def get_queryset(self):\n        return ProviderReview.objects.filter(\n            provider_id=self.kwargs['provider_id']\n        ).order_by('-created_at')\n    def perform_create(self, serializer):\n        provider = get_object_or_404(Provider, pk=self.kwargs['provider_id'])\n        serializer.save(provider=provider)\n# Group providers by estate (adminRole) with new fields",
+        "peekOfCode": "class ProviderReviewListCreateView(ListCreateAPIView):\n    serializer_class = ProviderReviewSerializer\n    def get_queryset(self):\n        return ProviderReview.objects.filter(\n            provider_id=self.kwargs['provider_id']\n        ).order_by('-created_at')\n    def perform_create(self, serializer):\n        provider = get_object_or_404(Provider, pk=self.kwargs['provider_id'])\n        serializer.save(provider=provider)\n# from collections import defaultdict",
         "detail": "api.views",
         "documentation": {}
     },
@@ -1055,7 +1063,7 @@
         "kind": 6,
         "importPath": "api.views",
         "description": "api.views",
-        "peekOfCode": "class ServiceProvidersByEstateView(APIView):\n    \"\"\"\n    GET /api/services-by-estate\n    Optional query params:\n      - estate=<adminRole>            e.g. Paradise admin, Range-view admin\n      - service_name=<string>         e.g. Electrician\n      - service_id=<int>              e.g. 3\n    \"\"\"\n    def get(self, request):\n        estate_q = (request.query_params.get('estate') or '').strip()",
+        "peekOfCode": "class ServiceProvidersByEstateView(APIView):\n    def get(self, request):\n        estate_q       = (request.query_params.get('estate') or '').strip()\n        service_name_q = (request.query_params.get('service_name') or '').strip()\n        service_id_q   = request.query_params.get('service_id')\n        providers_qs = (\n            Provider.objects\n            .select_related('service', 'admin')\n            .prefetch_related(\n                Prefetch(",
         "detail": "api.views",
         "documentation": {}
     },
