@@ -27,21 +27,12 @@ SECRET_KEY = 'django-insecure-q6)(9p#496c_-@lsvj-bni-l#$^u0cfy$fy^o6%6-3l_ie1rd5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = [
-#     "vaultify-43wm.onrender.com",       # your backend's Render domain
-#     "vaultifybackend.onrender.com",         # optional - your custom domain if any
-#     "localhost",                        # optional - for local testing
-#     "127.0.0.1",                        # optional - for local testing
-# ]
+
 ALLOWED_HOSTS = ['*']
 CORS_ALLOW_ALL_ORIGINS = True  # disable wildcard
 CORS_ALLOW_CREDENTIALS = True
 
-# CORS_ALLOWED_ORIGINS = [
-#     "http://localhost:5173",  
-#     "https://vaultifyadmin.africa/"
-# ]
-# CORS_ALLOWED_ORIGINS = ["*"]
+
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
     "https://vaultifyadmin.africa/",
@@ -112,24 +103,7 @@ DATABASES = {
     # 'default': dj_database_url.config(default='postgresql://vaultifydb_user:bzCxP5iz8QoLX8g6tdyuSTNd3T9kps7b@dpg-d27fncuuk2gs73e4a7i0-a.oregon-postgres.render.com/vaultifydb')
 
 }
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'vaultifyadmindb',
-#         'USER': 'vaultifyadmindb_user',
-#         'PASSWORD': 'sZiDhg7pVWRcSrRJdGPijKqymHZGbLZT',
-#         'HOST': 'dpg-d1vbld49c44c73dnsj3g-a.oregon-postgres.render.com',
-#         'PORT': '5432',
-#         'OPTIONS': {
-#             'sslmode': 'require',
-#         },
-#     }
-# }
 
-
-
-# Password validation
-# https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -182,46 +156,7 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
     ),
 }
-# ---------------------------
-# S3 / Linode Object Storage (Legacy E0)
-# ---------------------------
-# settings.py (additions/changes)
 
-# --- Linode Object Storage (S3-compatible) ---
-# if os.getenv("USE_S3_MEDIA") == "1":
-#     INSTALLED_APPS += ["storages"]
-
-#     AWS_ACCESS_KEY_ID        = os.getenv("AWS_ACCESS_KEY_ID")
-#     AWS_SECRET_ACCESS_KEY    = os.getenv("AWS_SECRET_ACCESS_KEY")
-#     AWS_STORAGE_BUCKET_NAME  = os.getenv("AWS_STORAGE_BUCKET_NAME", "vaultify")
-#     AWS_S3_REGION_NAME       = os.getenv("AWS_S3_REGION_NAME", "us-southeast-1")
-#     AWS_S3_ENDPOINT_URL      = os.getenv("AWS_S3_ENDPOINT_URL", "https://us-southeast-1.linodeobjects.com")
-
-#     # Use VIRTUAL-HOST style with Linode
-#     AWS_S3_ADDRESSING_STYLE  = "virtual"
-#     AWS_S3_SIGNATURE_VERSION = "s3v4"
-#     AWS_S3_FILE_OVERWRITE    = False
-#     AWS_QUERYSTRING_AUTH     = True 
-
-#     # If your bucket has "Bucket owner enforced" (ACLs disabled), keep this None:
-#     AWS_DEFAULT_ACL          = None
-
-#     # Build custom domain and media URL for virtual-host addressing
-#     AWS_S3_CUSTOM_DOMAIN     = f"{AWS_STORAGE_BUCKET_NAME}.{AWS_S3_ENDPOINT_URL.replace('https://','')}"
-#     MEDIA_URL                = f"https://{AWS_S3_CUSTOM_DOMAIN}/"
-
-#     DEFAULT_FILE_STORAGE     = "storages.backends.s3boto3.S3Boto3Storage"
-
-#     STORAGES = {
-#         "default": {"BACKEND": "storages.backends.s3boto3.S3Boto3Storage"},
-#         "staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"},
-#     }
-# else:
-#     STORAGES = {
-#         "staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"},
-#     }
-    
-# ---- S3 / Linode (private + signed URLs) ----
 if os.getenv("USE_S3_MEDIA") == "1":
     INSTALLED_APPS += ["storages"]
 
